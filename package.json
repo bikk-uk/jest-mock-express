@@ -1,12 +1,12 @@
 {
   "name": "@jest-mock/express",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A lightweight Jest mock for unit testing Express",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "node .",
     "build": "tsc",
-    "clean": "rm dist/*",
+    "clean": "rm -rf dist/*",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
   },
   "repository": {

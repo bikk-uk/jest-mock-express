@@ -1,9 +1,6 @@
 # dependencies
 /node_modules
 
-## output
-/dist
-
 # testing
 /coverage
 
