@@ -7,6 +7,8 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist/*",
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
   },
   "repository": {
@@ -32,7 +34,9 @@
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
   }
 }
