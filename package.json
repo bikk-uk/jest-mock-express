@@ -1,5 +1,5 @@
 {
-  "name": "jest-mock-express",
+  "name": "@jest-mock/express",
   "version": "0.1.0",
   "description": "A lightweight Jest mock for unit testing Express",
   "main": "index.ts",
