@@ -1,0 +1,38 @@
+{
+  "name": "jest-mock-express",
+  "version": "0.1.0",
+  "description": "A lightweight Jest mock for unit testing Express",
+  "main": "index.ts",
+  "scripts": {
+    "start": "node .",
+    "build": "tsc",
+    "clean": "rm dist/*",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bikk-uk/jest-mock-express.git"
+  },
+  "keywords": [
+    "jest",
+    "mock",
+    "express"
+  ],
+  "author": "bikk-uk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bikk-uk/jest-mock-express/issues"
+  },
+  "homepage": "https://github.com/bikk-uk/jest-mock-express#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/jest": "^24.0.19",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.4"
+  }
+}
