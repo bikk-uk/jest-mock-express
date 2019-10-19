@@ -1,3 +1,4 @@
-import getMockExpress from './src/express'
+import getMockReq from './src/request'
+import getMockRes from './src/response'
 
-export default getMockExpress
+export { getMockReq, getMockRes }
