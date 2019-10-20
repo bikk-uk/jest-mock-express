@@ -2,6 +2,8 @@
 
 A lightweight Jest mock for unit testing Express
 
+[![Build Status](https://travis-ci.org/bikk-uk/jest-mock-express.svg?branch=master)](https://travis-ci.org/bikk-uk/jest-mock-express)
+
 ## Getting Started
 
 Installation:
