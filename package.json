@@ -9,6 +9,7 @@
     "clean": "rm -rf dist/*",
     "test": "jest --coverage",
     "test-watch": "jest --watchAll",
+    "test-coverage": "yarn test && cat ./coverage/lcov.info | coveralls",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
   },
   "repository": {
@@ -31,6 +32,7 @@
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
+    "coveralls": "^3.0.7",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",

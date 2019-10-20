@@ -1,7 +1,12 @@
 language: node_js
 node_js:
   - stable
+branches:
+  only:
+    - master
 install:
   - npm install
 script:
   - npm test
+after_script:
+  - npm test-coverage
