@@ -34,4 +34,23 @@ describe('getMockRes', () => {
     expect(testRes.mockClear).toBeTruthy()
     expect(typeof testRes.mockClear).toBe('function')
   })
+
+  test('mock clear clears all mocks', () => {
+    const testRes = getMockRes()
+
+    // call all of the mock functions
+    testRes.next()
+    testRes.res.json()
+
+    // ensure they all report as being called
+    expect((testRes.next as jest.Mock).mock.calls.length).toBe(1)
+    expect((testRes.res.json as jest.Mock).mock.calls.length).toBe(1)
+
+    // clear the mock
+    testRes.mockClear()
+
+    // ensure they all have been cleared
+    expect((testRes.next as jest.Mock).mock.calls.length).toBe(0)
+    expect((testRes.res.json as jest.Mock).mock.calls.length).toBe(0)
+  })
 })
