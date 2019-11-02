@@ -8,7 +8,8 @@
     "build": "tsc",
     "clean": "rm -rf dist/*",
     "test": "jest --coverage",
-    "test-watch": "jest --watchAll",
+    "test-watch": "jest \"/*.ts\" --watchAll",
+    "test-watch-all": "jest --watchAll",
     "test-coverage": "yarn test && cat ./coverage/lcov.info | coveralls",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
   },
