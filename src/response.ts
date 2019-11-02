@@ -5,8 +5,8 @@ import { Response, NextFunction } from 'express'
  * Will return a typed and mocked version of key Express components.
  * mockClear() or clearMockRes() will clear all internal jest functions.
  */
-export const getMockRes = <T extends Response>(): {
-  res: T
+export const getMockRes = (): {
+  res: Response
   next: NextFunction
   mockClear: () => void
   clearMockRes: () => void
@@ -98,7 +98,7 @@ export const getMockRes = <T extends Response>(): {
   }
 
   return {
-    res: (response as unknown) as T,
+    res: (response as unknown) as Response,
     next: next as NextFunction,
     mockClear: clearAllMocks,
     clearMockRes: clearAllMocks
