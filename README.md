@@ -31,7 +31,7 @@ import { getMockReq, getMockRes } from '@jest-mock/express'
 const req = getMockReq()
 ```
 
-To create mock requests with values you can just provide them to the function in any order and all are optional. The advantage of this is that it ensures all of the other properties are also provided with default values.
+To create mock requests with values you can just provide them to the function in any order and all are optional. The advantage of this is that it ensures all of the other properties are not undefined.
 
 ```typescript
 // an example GET request to retrieve an entity
@@ -48,37 +48,40 @@ const req = getMockReq({
 
 ### `getMockRes`
 
-`getMockRes` will provided a mocked `res` that will provided jest mock functions for all common requirements.
+`getMockRes` will provide a mocked `res` object that will contain mock functions for common use cases.
 
 ```typescript
 const { res, next, clearMockRes } = getMockRes()
 ```
 
-All of the returned mocked functions can be cleared with a single call to `mockClear` there is an alias called `clearMockRes`.
+All of the returned mock functions can be cleared with a single call to `mockClear`. An alias is also provided called `clearMockRes`.
 
 ```typescript
 const { res, next, clearMockRes } = getMockRes()
+
 beforeEach(() => {
   clearMockRes()
 })
 ```
 
-It will also provide a mocked `next` function as that is commonly used and will also be cleared as part of `mockClear`/`clearMockRes`.
+It will also provide a mock `next` function for convenience, that will also be cleared as part of `mockClear`/`clearMockRes`.
 
 ```typescript
 const { res, next } = getMockRes()
 
 test('will respond with the entity from the service', async () => {
-  // generate a mock request with getMockReq (above)
-  const req = getMockReq({ params: { id: '123' } })
+  // generate a mock request
+  const req = getMockReq({ params: { id: 'abc-def' } })
 
+  // provide the mock res and next to check against
   await myController.get(req, res, next)
 
-  expect(res.json).toHaveBeenCalledWith({
-    message: expect.any(String),
-    entity: theExpectedEntity
-  })
-  expect(next).toHaveBeenCalledWith()
+  expect(res.json).toHaveBeenCalledWith(
+    expect.objectContaining({
+      id: 'abc-def'
+    })
+  )
+  expect(next).toBeCalled()
 })
 ```
 
