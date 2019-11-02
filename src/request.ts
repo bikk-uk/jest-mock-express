@@ -2,7 +2,7 @@
 import { Request } from 'express'
 import { MediaType } from 'express-serve-static-core'
 
-export const getMockReq = <T extends Request>(values?: {
+interface MockRequest {
   params?: any
   query?: any
   body?: any
@@ -37,8 +37,10 @@ export const getMockReq = <T extends Request>(values?: {
   app?: any
   res?: any
   next?: any
-}): T =>
-  ({
+}
+
+export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
+  return {
     params: (values && values.params) || {},
     query: (values && values.query) || {},
     body: (values && values.body) || {},
@@ -73,6 +75,7 @@ export const getMockReq = <T extends Request>(values?: {
     app: (values && values.app) || {},
     res: (values && values.res) || jest.fn().mockName('res mock default'),
     next: (values && values.next) || jest.fn().mockName('next mock default')
-  } as T)
+  } as T
+}
 
 export default getMockReq
