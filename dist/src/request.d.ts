@@ -1,28 +1,28 @@
 import { Request } from 'express';
 import { MediaType } from 'express-serve-static-core';
-export declare const getMockReq: <T extends Request>(values?: {
+interface MockRequest {
     params?: any;
     query?: any;
     body?: any;
     cookies?: any;
-    method?: string | undefined;
-    protocol?: string | undefined;
-    secure?: boolean | undefined;
-    ip?: string | undefined;
-    ips?: string[] | undefined;
-    subdomains?: string[] | undefined;
-    path?: string | undefined;
-    hostname?: string | undefined;
-    host?: string | undefined;
-    fresh?: boolean | undefined;
-    stale?: boolean | undefined;
-    xhr?: boolean | undefined;
+    method?: string;
+    protocol?: string;
+    secure?: boolean;
+    ip?: string;
+    ips?: string[];
+    subdomains?: string[];
+    path?: string;
+    hostname?: string;
+    host?: string;
+    fresh?: boolean;
+    stale?: boolean;
+    xhr?: boolean;
     route?: any;
     signedCookies?: any;
-    originalUrl?: string | undefined;
-    url?: string | undefined;
-    baseUrl?: string | undefined;
-    accepted?: MediaType[] | undefined;
+    originalUrl?: string;
+    url?: string;
+    baseUrl?: string;
+    accepted?: MediaType[];
     get?: any;
     header?: any;
     accepts?: any;
@@ -35,5 +35,6 @@ export declare const getMockReq: <T extends Request>(values?: {
     app?: any;
     res?: any;
     next?: any;
-} | undefined) => T;
+}
+export declare const getMockReq: <T extends Request>(values?: MockRequest) => T;
 export default getMockReq;
