@@ -6,6 +6,7 @@ A lightweight Jest mock for unit testing Express
 [![Coverage Status](https://coveralls.io/repos/github/bikk-uk/jest-mock-express/badge.svg?branch=master)](https://coveralls.io/github/bikk-uk/jest-mock-express?branch=master)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/bikk-uk/jest-mock-express?label=github)
 ![npm](https://img.shields.io/npm/v/@jest-mock/express)
+![NPM](https://img.shields.io/npm/l/@jest-mock/express)
 
 ## Getting Started
 

@@ -8,42 +8,62 @@ const response_1 = __importDefault(require("./response"));
 describe('getMockRes', () => {
     test('returns expected object', () => {
         const testRes = response_1.default();
-        // the response contains values for res and next and a clear function
+        // the response contains values for res and next and clear functions
         expect(testRes).toBeInstanceOf(Object);
-        expect(Object.keys(testRes).length).toBe(3);
+        expect(Object.keys(testRes).length).toBe(4);
     });
     test('the mock res is provided and contains the expected functions', () => {
-        const testRes = response_1.default();
+        const { res } = response_1.default();
         // res contains the expected functions
-        expect(testRes.res).toBeTruthy();
-        expect(Object.keys(testRes.res).length).toBe(1);
-        expect(typeof testRes.res.json).toBe('function');
+        expect(res).toBeTruthy();
+        expect(Object.keys(res).length).toBe(1);
+        expect(typeof res.json).toBe('function');
     });
     test('the mock next function is provided', () => {
-        const testRes = response_1.default();
+        const { next } = response_1.default();
         // next is part of the mock response
-        expect(testRes.next).toBeTruthy();
-        expect(typeof testRes.next).toBe('function');
+        expect(next).toBeTruthy();
+        expect(typeof next).toBe('function');
     });
     test('the mock clear function is provided', () => {
-        const testRes = response_1.default();
+        const { mockClear } = response_1.default();
         // a mock clear function is part of the mock response
-        expect(testRes.mockClear).toBeTruthy();
-        expect(typeof testRes.mockClear).toBe('function');
+        expect(mockClear).toBeTruthy();
+        expect(typeof mockClear).toBe('function');
+    });
+    test('the mock clear alias function is provided', () => {
+        const { clearMockRes } = response_1.default();
+        // a mock clear alias function is part of the mock response
+        expect(clearMockRes).toBeTruthy();
+        expect(typeof clearMockRes).toBe('function');
     });
     test('mock clear clears all mocks', () => {
-        const testRes = response_1.default();
+        const { res, next, mockClear } = response_1.default();
         // call all of the mock functions
-        testRes.next();
-        testRes.res.json();
+        next();
+        res.json();
         // ensure they all report as being called
-        expect(testRes.next.mock.calls.length).toBe(1);
-        expect(testRes.res.json.mock.calls.length).toBe(1);
+        expect(next.mock.calls.length).toBe(1);
+        expect(res.json.mock.calls.length).toBe(1);
         // clear the mock
-        testRes.mockClear();
+        mockClear();
         // ensure they all have been cleared
-        expect(testRes.next.mock.calls.length).toBe(0);
-        expect(testRes.res.json.mock.calls.length).toBe(0);
+        expect(next.mock.calls.length).toBe(0);
+        expect(res.json.mock.calls.length).toBe(0);
+    });
+    test('clearMockRes clears all mocks', () => {
+        const { res, next, clearMockRes } = response_1.default();
+        // call all of the mock functions
+        next();
+        res.json();
+        // ensure they all report as being called
+        expect(next.mock.calls.length).toBe(1);
+        expect(res.json.mock.calls.length).toBe(1);
+        // clear the mock
+        clearMockRes();
+        // ensure they all have been cleared
+        expect(next.mock.calls.length).toBe(0);
+        expect(res.json.mock.calls.length).toBe(0);
     });
 });
 //# sourceMappingURL=response.test.js.map
