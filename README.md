@@ -49,7 +49,7 @@ const req = getMockReq({
 
 ### `getMockRes`
 
-`getMockRes` will provide a mocked `res` object that will contain mock functions for common use cases.
+`getMockRes` will provide a mocked `res` object with mock functions. Chaining has been implemented for the required functions.
 
 ```typescript
 const { res, next, clearMockRes } = getMockRes()
