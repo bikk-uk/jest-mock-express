@@ -4,7 +4,7 @@ import { Response, NextFunction } from 'express';
  * mockClear() or clearMockRes() will clear all internal jest functions.
  */
 export declare const getMockRes: () => {
-    res: Response;
+    res: Response<any>;
     next: NextFunction;
     mockClear: () => void;
     clearMockRes: () => void;
