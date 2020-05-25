@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getMockRes = void 0;
 /**
  * Will return a typed and mocked version of key Express components.
  * mockClear() or clearMockRes() will clear all internal jest functions.
