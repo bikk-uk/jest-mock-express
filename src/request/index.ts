@@ -1,7 +1,25 @@
-// Libraries
+// Types
 import { MediaType } from 'express-serve-static-core'
 
-export interface MockRequest {
+interface MockIncomingMessage {
+  aborted?: boolean
+  httpVersion?: string
+  httpVersionMajor?: number
+  httpVersionMinor?: number
+  complete?: boolean
+  connection?: any
+  socket?: any
+  headers?: any
+  rawHeaders?: string[]
+  trailers?: { [key: string]: string | undefined }
+  rawTrailers?: string[]
+  setTimeout?: any
+  statusCode?: number
+  statusMessage?: string
+  destroy?: any
+}
+
+export interface MockRequest extends MockIncomingMessage {
   params?: any
   query?: any
   body?: any

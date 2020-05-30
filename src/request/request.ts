@@ -40,6 +40,23 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     app: (values && values.app) || {},
     res: (values && values.res) || jest.fn().mockName('res mock default'),
     next: (values && values.next) || jest.fn().mockName('next mock default'),
+
+    // http - IncomingMessage
+    aborted: (values && values.aborted) || false,
+    httpVersion: (values && values.httpVersion) || '',
+    httpVersionMajor: (values && values.httpVersionMajor) || 0,
+    httpVersionMinor: (values && values.httpVersionMinor) || 0,
+    complete: (values && values.complete) || false,
+    connection: (values && values.connection) || {},
+    socket: (values && values.socket) || {},
+    headers: (values && values.headers) || {},
+    rawHeaders: (values && values.rawHeaders) || [],
+    trailers: (values && values.trailers) || {},
+    rawTrailers: (values && values.rawTrailers) || [],
+    setTimeout: (values && values.setTimeout) || jest.fn().mockName('setTimeout mock default'),
+    statusCode: (values && values.statusCode) || 0,
+    statusMessage: (values && values.statusMessage) || '',
+    destroy: (values && values.destroy) || jest.fn().mockName('destroy mock default'),
   } as T
 }
 
