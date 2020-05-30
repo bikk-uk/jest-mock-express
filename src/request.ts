@@ -74,7 +74,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     is: (values && values.is) || jest.fn().mockName('is mock default'),
     app: (values && values.app) || {},
     res: (values && values.res) || jest.fn().mockName('res mock default'),
-    next: (values && values.next) || jest.fn().mockName('next mock default')
+    next: (values && values.next) || jest.fn().mockName('next mock default'),
   } as T
 }
 
