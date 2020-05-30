@@ -33,7 +33,7 @@ exports.getMockRes = () => {
         append: jest.fn(),
         headersSent: false,
         app: {},
-        req: {}
+        req: {},
     };
     // for the function that are chainable, return the response
     response.status.mockReturnValue(response);
@@ -92,7 +92,7 @@ exports.getMockRes = () => {
         res: response,
         next: next,
         mockClear: clearAllMocks,
-        clearMockRes: clearAllMocks
+        clearMockRes: clearAllMocks,
     };
 };
 exports.default = exports.getMockRes;
