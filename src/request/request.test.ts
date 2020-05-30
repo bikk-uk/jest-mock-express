@@ -235,4 +235,33 @@ describe('getMockReq', () => {
     expect(testReq.headers['HeaderTwo']).toBe('two')
     expect(testReq.headers['HeaderThree']).toBe('three')
   })
+
+  test('issue #6', () => {
+    enum AppOS {
+      Android = 1,
+    }
+
+    const testReq = getMockReq({
+      query: {
+        os: AppOS.Android,
+        sellerId: '12345',
+      },
+      headers: {
+        Authorization: 'token validtoken',
+      },
+    })
+
+    // req.query has the provided arguments
+    expect(testReq.query).toBeTruthy()
+    expect(testReq.query).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.query).length).toBe(2)
+    expect(testReq.query['os']).toBe(AppOS.Android)
+    expect(testReq.query['sellerId']).toBe('12345')
+
+    // req.headers has the provided arguments
+    expect(testReq.headers).toBeTruthy()
+    expect(testReq.headers).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.headers).length).toBe(1)
+    expect(testReq.headers['Authorization']).toBe('token validtoken')
+  })
 })
