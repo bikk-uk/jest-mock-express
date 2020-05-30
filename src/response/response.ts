@@ -38,7 +38,7 @@ export const getMockRes = (): {
     append: jest.fn(),
     headersSent: false,
     app: {},
-    req: {}
+    req: {},
   }
 
   // for the function that are chainable, return the response
@@ -101,7 +101,7 @@ export const getMockRes = (): {
     res: (response as unknown) as Response,
     next: next as NextFunction,
     mockClear: clearAllMocks,
-    clearMockRes: clearAllMocks
+    clearMockRes: clearAllMocks,
   }
 }
 

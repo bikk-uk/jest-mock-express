@@ -8,7 +8,7 @@ describe('getMockReq', () => {
     // the request contains values
     expect(testReq).toBeTruthy()
     expect(testReq).toBeInstanceOf(Object)
-    expect(Object.keys(testReq).length).toBe(34)
+    expect(Object.keys(testReq).length).toBe(49)
 
     // req.params is an empty object
     expect(testReq.params).toBeTruthy()
@@ -128,6 +128,61 @@ describe('getMockReq', () => {
 
     // req.next is a mocked function
     expect((testReq.next as jest.Mock).getMockName()).toBe('next mock default')
+
+    // req.aborted is a boolean
+    expect(testReq.aborted).toBe(false)
+
+    // req.httpVersion is an empty string
+    expect(testReq.httpVersion).toBe('')
+
+    // req.httpVersionMajor is a number
+    expect(testReq.httpVersionMajor).toBe(0)
+
+    // req.httpVersionMinor is a number
+    expect(testReq.httpVersionMinor).toBe(0)
+
+    // req.complete is a boolean
+    expect(testReq.complete).toBe(false)
+
+    // req.connection is an empty object
+    expect(testReq.connection).toBeTruthy()
+    expect(testReq.connection).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.connection).length).toBe(0)
+
+    // req.socket is an empty object
+    expect(testReq.socket).toBeTruthy()
+    expect(testReq.socket).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.socket).length).toBe(0)
+
+    // req.headers is an empty object
+    expect(testReq.headers).toBeTruthy()
+    expect(testReq.headers).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.headers).length).toBe(0)
+
+    // req.rawHeaders is an empty array
+    expect(Array.isArray(testReq.rawHeaders)).toBe(true)
+    expect(testReq.rawHeaders.length).toBe(0)
+
+    // req.trailers is an empty object
+    expect(testReq.trailers).toBeTruthy()
+    expect(testReq.trailers).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.trailers).length).toBe(0)
+
+    // req.rawTrailers is an empty array
+    expect(Array.isArray(testReq.rawTrailers)).toBe(true)
+    expect(testReq.rawTrailers.length).toBe(0)
+
+    // req.setTimeout is a mocked function
+    expect((testReq.setTimeout as jest.Mock).getMockName()).toBe('setTimeout mock default')
+
+    // req.statusCode is a number
+    expect(testReq.statusCode).toBe(0)
+
+    // req.statusMessage is an empty string
+    expect(testReq.statusMessage).toBe('')
+
+    // req.destroy is a mocked function
+    expect((testReq.destroy as jest.Mock).getMockName()).toBe('destroy mock default')
   })
 
   test('returns provided params', () => {
@@ -161,5 +216,52 @@ describe('getMockReq', () => {
     expect(Object.keys(testReq.body).length).toBe(2)
     expect(testReq.body['five']).toEqual(expect.objectContaining({ six: 6 }))
     expect(testReq.body['seven']).toEqual(expect.arrayContaining([8, 9]))
+  })
+
+  test('returns provided headers', () => {
+    const testReq = getMockReq({
+      headers: {
+        HeaderOne: 'one',
+        HeaderTwo: 'two',
+        HeaderThree: 'three',
+      },
+    })
+
+    // req.headers has the provided arguments
+    expect(testReq.headers).toBeTruthy()
+    expect(testReq.headers).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.headers).length).toBe(3)
+    expect(testReq.headers['HeaderOne']).toBe('one')
+    expect(testReq.headers['HeaderTwo']).toBe('two')
+    expect(testReq.headers['HeaderThree']).toBe('three')
+  })
+
+  test('issue #6', () => {
+    enum AppOS {
+      Android = 1,
+    }
+
+    const testReq = getMockReq({
+      query: {
+        os: AppOS.Android,
+        sellerId: '12345',
+      },
+      headers: {
+        Authorization: 'token validtoken',
+      },
+    })
+
+    // req.query has the provided arguments
+    expect(testReq.query).toBeTruthy()
+    expect(testReq.query).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.query).length).toBe(2)
+    expect(testReq.query['os']).toBe(AppOS.Android)
+    expect(testReq.query['sellerId']).toBe('12345')
+
+    // req.headers has the provided arguments
+    expect(testReq.headers).toBeTruthy()
+    expect(testReq.headers).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.headers).length).toBe(1)
+    expect(testReq.headers['Authorization']).toBe('token validtoken')
   })
 })
