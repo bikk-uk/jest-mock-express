@@ -19,8 +19,12 @@
   },
   "keywords": [
     "jest",
+    "test",
+    "testing",
     "mock",
-    "express"
+    "mocking",
+    "express",
+    "typescript"
   ],
   "author": "bikk-uk",
   "license": "MIT",
