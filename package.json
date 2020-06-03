@@ -1,6 +1,6 @@
 {
   "name": "@jest-mock/express",
-  "version": "0.9.6",
+  "version": "1.0.0",
   "description": "A lightweight Jest mock for unit testing Express",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,11 +18,11 @@
     "url": "https://github.com/bikk-uk/jest-mock-express.git"
   },
   "keywords": [
-    "jest",
     "test",
     "testing",
     "mock",
     "mocking",
+    "jest",
     "express",
     "typescript"
   ],
