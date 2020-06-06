@@ -1,6 +1,6 @@
 {
   "name": "@jest-mock/express",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A lightweight Jest mock for unit testing Express",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,6 +25,7 @@
     "mocking",
     "jest",
     "express",
+    "expressjs",
     "controller",
     "typescript"
   ],
