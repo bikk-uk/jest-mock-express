@@ -5,13 +5,14 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf dist/*",
     "test": "jest --coverage",
     "test-watch": "jest \"/*.ts\" --watchAll",
     "test-watch-all": "jest --watchAll",
     "test-coverage": "yarn test && cat ./coverage/lcov.info | coveralls",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
+    "build": "tsc",
+    "clean": "rm -rf dist/*",
+    "publish": "yarn test && yarn clean && yarn build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "mocking",
     "jest",
     "express",
+    "controller",
     "typescript"
   ],
   "author": "bikk-uk",
