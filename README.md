@@ -25,7 +25,7 @@ import { getMockReq, getMockRes } from '@jest-mock/express'
 
 ## Usage
 
-### `getMockReq`
+### Request - `getMockReq`
 
 `getMockReq` is intended to mock the `req` object as easily as possible. In its simplest form you can call it with no arguments to return a standard `req` with no values.
 
@@ -33,7 +33,7 @@ import { getMockReq, getMockRes } from '@jest-mock/express'
 const req = getMockReq()
 ```
 
-To create mock requests with values you can just provide them to the function in any order and all are optional. The advantage of this is that it ensures all of the other properties are not undefined.
+To create mock requests with values, you can simply provide them to the function in any order with all being optional. The advantage of this is that it ensures all of the other properties are not undefined.
 
 ```typescript
 // an example GET request to retrieve an entity
@@ -44,13 +44,13 @@ const req = getMockReq({ params: { id: '123' } })
 // an example PUT request to update a person
 const req = getMockReq({
   params: { id: 564 },
-  body: { firstname: 'James', lastname: 'Smith', age: 34 }
+  body: { firstname: 'James', lastname: 'Smith', age: 34 },
 })
 ```
 
-### `getMockRes`
+### Response - `getMockRes`
 
-`getMockRes` will provide a mocked `res` object with mock functions. Chaining has been implemented for the required functions.
+`getMockRes` will provide a `res` object with Jest mock functions. Chaining has been implemented for the applicable functions.
 
 ```typescript
 const { res, next, clearMockRes } = getMockRes()
@@ -66,7 +66,11 @@ beforeEach(() => {
 })
 ```
 
-It will also provide a mock `next` function for convenience, that will also be cleared as part of `mockClear`/`clearMockRes`.
+It will also provide a mock `next` function for convenience. That will also be cleared as part of the call to `mockClear`/`clearMockRes`.
+
+### Example
+
+A full example could be:
 
 ```typescript
 const { res, next } = getMockRes()
@@ -75,42 +79,14 @@ test('will respond with the entity from the service', async () => {
   // generate a mock request
   const req = getMockReq({ params: { id: 'abc-def' } })
 
-  // provide the mock res and next to check against
-  await myController.get(req, res, next)
+  // provide the mock req, res, and next to check against
+  await myController.getEntity(req, res, next)
 
   expect(res.json).toHaveBeenCalledWith(
     expect.objectContaining({
-      id: 'abc-def'
-    })
+      id: 'abc-def',
+    }),
   )
   expect(next).toBeCalled()
 })
 ```
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn build`
-
-Transpiles the TypeScript source to the `dist` folder.
-
-### `yarn clean`
-
-Clears the `dist` folder.
-
-### `yarn test`
-
-Runs the tests and produces the coverage output.
-
-### `yarn test-watch`
-
-Runs the tests in watch mode, will not test the dist output folder.
-
-### `test-watch-all`
-
-Runs the tests in watch mode, will test both the TypeScript and generated JavaScript.
-
-### `yarn lint`
-
-Runs the linter over the project.

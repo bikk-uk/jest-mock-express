@@ -7,6 +7,5 @@ branches:
 install:
   - yarn
 script:
-  - yarn test
-after_script:
+  - yarn lint
   - yarn test-coverage
