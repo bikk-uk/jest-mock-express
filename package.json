@@ -12,7 +12,9 @@
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
     "build": "tsc",
     "clean": "rm -rf dist/*",
-    "release": "yarn && yarn clean && yarn build && yarn test"
+    "release": "yarn && yarn clean && yarn build && yarn test",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -49,5 +51,9 @@
     "prettier": "^2.0.4",
     "ts-jest": "^26.1.0",
     "typescript": "^3.9.5"
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.349.0"
   }
 }
