@@ -1638,3 +1638,25 @@ patch:
         patched: '2020-06-29T09:00:44.166Z'
     - jest > jest-cli > @jest/core > jest-runner > jest-jasmine2 > jest-runtime > jest-config > babel-jest > @jest/transform > babel-plugin-istanbul > istanbul-lib-instrument > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
         patched: '2020-06-29T09:00:44.166Z'
+    - jest > @jest/core > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > jest-cli > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > jest-cli > @jest/core > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > @jest/core > jest-runner > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > @jest/core > jest-runtime > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > jest-cli > @jest/core > jest-runner > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > @jest/core > jest-runner > jest-runtime > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > jest-cli > @jest/core > jest-runtime > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > @jest/core > jest-runner > jest-jasmine2 > jest-runtime > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > jest-cli > @jest/core > jest-runner > jest-runtime > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
+    - jest > jest-cli > @jest/core > jest-runner > jest-jasmine2 > jest-runtime > jest-config > babel-jest > babel-preset-jest > babel-plugin-jest-hoist > @types/babel__core > @types/babel__traverse > @babel/types > lodash:
+        patched: '2020-06-29T17:51:59.197Z'
