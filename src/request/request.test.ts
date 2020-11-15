@@ -236,6 +236,26 @@ describe('getMockReq', () => {
     expect(testReq.headers['HeaderThree']).toBe('three')
   })
 
+  test('allows custom properties, with casting', () => {
+    interface User {
+      id: string
+      name: string
+    }
+    const mockUser: User = {
+      id: '123',
+      name: 'Bob',
+    }
+
+    const testReq = getMockReq({
+      user: mockUser,
+    })
+    const castedReq = (testReq as unknown) as { user: User }
+
+    // req.user has the provided arguments
+    expect(castedReq.user).toBeTruthy()
+    expect(castedReq.user).toBe(mockUser)
+  })
+
   test('issue #6', () => {
     enum AppOS {
       Android = 1,
