@@ -1,17 +1,40 @@
 // Libraries
 import { Response, NextFunction } from 'express'
 
+// Types
+import type { MockResponse } from './index'
+
 /**
  * Will return a typed and mocked version of key Express components.
  * mockClear() or clearMockRes() will clear all internal jest functions.
  */
-export const getMockRes = (): {
+export const getMockRes = (
+  values: MockResponse = {},
+): {
   res: Response
   next: NextFunction
   mockClear: () => void
   clearMockRes: () => void
 } => {
   const next = jest.fn()
+  const {
+    headersSent = false,
+    locals = {},
+    charset = '',
+    app = {},
+    req = {},
+    statusCode = 0,
+    statusMessage = '',
+    upgrading = false,
+    chunkedEncoding = false,
+    shouldKeepAlive = false,
+    useChunkedEncodingByDefault = false,
+    sendDate = false,
+    finished = false,
+    connection = {},
+    socket = {},
+    ...extraProvidedValues
+  } = values
   const response = {
     // express - Response
     status: jest.fn(),
@@ -37,19 +60,19 @@ export const getMockRes = (): {
     render: jest.fn(),
     vary: jest.fn(),
     append: jest.fn(),
-    headersSent: false,
-    locals: {},
-    charset: '',
-    app: {},
-    req: {},
+    headersSent,
+    locals,
+    charset,
+    app,
+    req,
     // http - ServerResponse
     assignSocket: jest.fn(),
     detachSocket: jest.fn(),
     writeContinue: jest.fn(),
     writeHead: jest.fn(),
     writeProcessing: jest.fn(),
-    statusCode: 0,
-    statusMessage: '',
+    statusCode,
+    statusMessage,
     // http - OutgoingMessage
     setTimeout: jest.fn(),
     setHeader: jest.fn(),
@@ -60,14 +83,16 @@ export const getMockRes = (): {
     removeHeader: jest.fn(),
     addTrailers: jest.fn(),
     flushHeaders: jest.fn(),
-    upgrading: false,
-    chunkedEncoding: false,
-    shouldKeepAlive: false,
-    useChunkedEncodingByDefault: false,
-    sendDate: false,
-    finished: false,
-    connection: {},
-    socket: {},
+    upgrading,
+    chunkedEncoding,
+    shouldKeepAlive,
+    useChunkedEncodingByDefault,
+    sendDate,
+    finished,
+    connection,
+    socket,
+    // custom values
+    ...extraProvidedValues,
   }
 
   // express - Response - chainable functions
