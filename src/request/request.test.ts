@@ -1,3 +1,6 @@
+// Types
+import type { MockRequest } from './index'
+
 // Tested Module
 import getMockReq from './request'
 
@@ -246,14 +249,37 @@ describe('getMockReq', () => {
       name: 'Bob',
     }
 
+    type CustomType = MockRequest & User
+
     const testReq = getMockReq({
       user: mockUser,
+      query: {
+        id: '123',
+        limit: 10,
+        page: 2,
+      },
     })
-    const castedReq = (testReq as unknown) as { user: User }
 
-    // req.user has the provided arguments
+    // req.query has the provided arguments
+    expect(testReq.query).toBeTruthy()
+    expect(testReq.query).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.query).length).toBe(3)
+    expect(testReq.query['id']).toBe('123')
+    expect(testReq.query['limit']).toBe(10)
+    expect(testReq.query['page']).toBe(2)
+
+    const castedReq = (testReq as unknown) as CustomType
+    // castedReq.user has the provided arguments
     expect(castedReq.user).toBeTruthy()
     expect(castedReq.user).toBe(mockUser)
+
+    // castedReq.query has the provided arguments
+    expect(castedReq.query).toBeTruthy()
+    expect(castedReq.query).toBeInstanceOf(Object)
+    expect(Object.keys(castedReq.query).length).toBe(3)
+    expect(castedReq.query['id']).toBe('123')
+    expect(castedReq.query['limit']).toBe(10)
+    expect(castedReq.query['page']).toBe(2)
   })
 
   test('issue #6', () => {
