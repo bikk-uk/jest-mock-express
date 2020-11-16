@@ -1,7 +1,6 @@
 // Types
 import type { Socket } from 'net'
 import type { Response } from 'express'
-import { MockResponse } from './index'
 
 // Tested Module
 import getMockRes from './response'
@@ -300,21 +299,23 @@ describe('getMockRes', () => {
       id: string
       name: string
     }
+    interface CustomResponse extends Response {
+      user: User
+    }
+
     const mockUser: User = {
       id: '123',
       name: 'Bob',
     }
 
-    type CustomType = MockResponse & User
-
     // default value is not provided
     const { res: defaultRes } = getMockRes()
-    const castedDefaultRes = (defaultRes as unknown) as CustomType
+    const castedDefaultRes = (defaultRes as unknown) as CustomResponse
     expect(castedDefaultRes.user).toBeUndefined()
 
     // allows setting a custom property
     const { res } = getMockRes({ sendDate: true, user: mockUser })
-    const castedRes = (res as unknown) as CustomType
+    const castedRes = (res as unknown) as CustomResponse
 
     // adds and extra property to the res object
     expect(castedRes).toBeTruthy()

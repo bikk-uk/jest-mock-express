@@ -1,5 +1,5 @@
 // Types
-import type { MockRequest } from './index'
+import type { Request } from 'express'
 
 // Tested Module
 import getMockReq from './request'
@@ -239,19 +239,21 @@ describe('getMockReq', () => {
     expect(testReq.headers['HeaderThree']).toBe('three')
   })
 
-  test('allows custom properties, with casting', () => {
+  test('allows custom properties', () => {
     interface User {
       id: string
       name: string
     }
+    interface CustomRequest extends Request {
+      user: User
+    }
+
     const mockUser: User = {
       id: '123',
       name: 'Bob',
     }
 
-    type CustomType = MockRequest & User
-
-    const testReq = getMockReq({
+    const testReq = getMockReq<CustomRequest>({
       user: mockUser,
       query: {
         id: '123',
@@ -260,6 +262,10 @@ describe('getMockReq', () => {
       },
     })
 
+    // req.user has the provided arguments
+    expect(testReq.user).toBeTruthy()
+    expect(testReq.user).toBe(mockUser)
+
     // req.query has the provided arguments
     expect(testReq.query).toBeTruthy()
     expect(testReq.query).toBeInstanceOf(Object)
@@ -267,19 +273,6 @@ describe('getMockReq', () => {
     expect(testReq.query['id']).toBe('123')
     expect(testReq.query['limit']).toBe(10)
     expect(testReq.query['page']).toBe(2)
-
-    const castedReq = (testReq as unknown) as CustomType
-    // castedReq.user has the provided arguments
-    expect(castedReq.user).toBeTruthy()
-    expect(castedReq.user).toBe(mockUser)
-
-    // castedReq.query has the provided arguments
-    expect(castedReq.query).toBeTruthy()
-    expect(castedReq.query).toBeInstanceOf(Object)
-    expect(Object.keys(castedReq.query).length).toBe(3)
-    expect(castedReq.query['id']).toBe('123')
-    expect(castedReq.query['limit']).toBe(10)
-    expect(castedReq.query['page']).toBe(2)
   })
 
   test('issue #6', () => {
