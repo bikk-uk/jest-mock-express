@@ -303,4 +303,24 @@ describe('getMockReq', () => {
     expect(Object.keys(testReq.headers).length).toBe(1)
     expect(testReq.headers['Authorization']).toBe('token validtoken')
   })
+
+  test('issue #27', () => {
+    interface CustomRequest extends Request {
+      locals: any
+      customProperty: string
+    }
+
+    const testReq = getMockReq<CustomRequest>({
+      locals: { var: 'hi there' },
+      customProperty: 'value',
+    })
+
+    // req.locals has the provided arguments
+    expect(testReq.locals).toBeTruthy()
+    expect(testReq.locals).toEqual({ var: 'hi there' })
+
+    // req.customProperty has the provided arguments
+    expect(testReq.customProperty).toBeTruthy()
+    expect(testReq.customProperty).toEqual('value')
+  })
 })
