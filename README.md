@@ -94,7 +94,7 @@ test('will respond with the entity from the service', async () => {
   // generate a mock request with params
   const req = getMockReq({ params: { id: 'abc-def' } })
 
-  // provide the mock req, res, and next to assert against
+  // provide the mock req, res, and next to assert
   await myController.getEntity(req, res, next)
 
   expect(res.json).toHaveBeenCalledWith(
