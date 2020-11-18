@@ -27,7 +27,7 @@ import { getMockReq, getMockRes } from '@jest-mock/express'
 
 ### Request - `getMockReq`
 
-`getMockReq` is intended to mock the `req` object as easily as possible. In its simplest form you can call it with no arguments to return a standard `req` object with mocked functions and default values values for properties.
+`getMockReq` is intended to mock the `req` object as easily as possible. In its simplest form you can call it with no arguments to return a standard `req` object with mocked functions and default values for properties.
 
 ```typescript
 const req = getMockReq()
