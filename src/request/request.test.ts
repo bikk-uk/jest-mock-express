@@ -1,3 +1,6 @@
+// Types
+import type { Request } from 'express'
+
 // Tested Module
 import getMockReq from './request'
 
@@ -6,27 +9,27 @@ describe('getMockReq', () => {
     const testReq = getMockReq()
 
     // the request contains values
-    expect(testReq).toBeTruthy()
+    expect(testReq).toBeDefined()
     expect(testReq).toBeInstanceOf(Object)
     expect(Object.keys(testReq).length).toBe(49)
 
     // req.params is an empty object
-    expect(testReq.params).toBeTruthy()
+    expect(testReq.params).toBeDefined()
     expect(testReq.params).toBeInstanceOf(Object)
     expect(Object.keys(testReq.params).length).toBe(0)
 
     // req.query is an empty object
-    expect(testReq.query).toBeTruthy()
+    expect(testReq.query).toBeDefined()
     expect(testReq.query).toBeInstanceOf(Object)
     expect(Object.keys(testReq.query).length).toBe(0)
 
     // req.body is an empty object
-    expect(testReq.body).toBeTruthy()
+    expect(testReq.body).toBeDefined()
     expect(testReq.body).toBeInstanceOf(Object)
     expect(Object.keys(testReq.body).length).toBe(0)
 
     // req.cookies is an empty object
-    expect(testReq.cookies).toBeTruthy()
+    expect(testReq.cookies).toBeDefined()
     expect(testReq.cookies).toBeInstanceOf(Object)
     expect(Object.keys(testReq.cookies).length).toBe(0)
 
@@ -69,12 +72,12 @@ describe('getMockReq', () => {
     expect(testReq.xhr).toBe(false)
 
     // req.route is an empty object
-    expect(testReq.route).toBeTruthy()
+    expect(testReq.route).toBeDefined()
     expect(testReq.route).toBeInstanceOf(Object)
     expect(Object.keys(testReq.route).length).toBe(0)
 
     // req.signedCookies is an empty object
-    expect(testReq.signedCookies).toBeTruthy()
+    expect(testReq.signedCookies).toBeDefined()
     expect(testReq.signedCookies).toBeInstanceOf(Object)
     expect(Object.keys(testReq.signedCookies).length).toBe(0)
 
@@ -119,7 +122,7 @@ describe('getMockReq', () => {
     expect((testReq.is as jest.Mock).getMockName()).toBe('is mock default')
 
     // req.app is an empty object
-    expect(testReq.app).toBeTruthy()
+    expect(testReq.app).toBeDefined()
     expect(testReq.app).toBeInstanceOf(Object)
     expect(Object.keys(testReq.app).length).toBe(0)
 
@@ -145,17 +148,17 @@ describe('getMockReq', () => {
     expect(testReq.complete).toBe(false)
 
     // req.connection is an empty object
-    expect(testReq.connection).toBeTruthy()
+    expect(testReq.connection).toBeDefined()
     expect(testReq.connection).toBeInstanceOf(Object)
     expect(Object.keys(testReq.connection).length).toBe(0)
 
     // req.socket is an empty object
-    expect(testReq.socket).toBeTruthy()
+    expect(testReq.socket).toBeDefined()
     expect(testReq.socket).toBeInstanceOf(Object)
     expect(Object.keys(testReq.socket).length).toBe(0)
 
     // req.headers is an empty object
-    expect(testReq.headers).toBeTruthy()
+    expect(testReq.headers).toBeDefined()
     expect(testReq.headers).toBeInstanceOf(Object)
     expect(Object.keys(testReq.headers).length).toBe(0)
 
@@ -164,7 +167,7 @@ describe('getMockReq', () => {
     expect(testReq.rawHeaders.length).toBe(0)
 
     // req.trailers is an empty object
-    expect(testReq.trailers).toBeTruthy()
+    expect(testReq.trailers).toBeDefined()
     expect(testReq.trailers).toBeInstanceOf(Object)
     expect(Object.keys(testReq.trailers).length).toBe(0)
 
@@ -189,7 +192,7 @@ describe('getMockReq', () => {
     const testReq = getMockReq({ params: { one: 1, two: 2 } })
 
     // req.params has the provided arguments
-    expect(testReq.params).toBeTruthy()
+    expect(testReq.params).toBeDefined()
     expect(testReq.params).toBeInstanceOf(Object)
     expect(Object.keys(testReq.params).length).toBe(2)
     expect(testReq.params['one']).toBe(1)
@@ -200,7 +203,7 @@ describe('getMockReq', () => {
     const testReq = getMockReq({ query: { three: 'three', four: 'four' } })
 
     // req.query has the provided arguments
-    expect(testReq.query).toBeTruthy()
+    expect(testReq.query).toBeDefined()
     expect(testReq.query).toBeInstanceOf(Object)
     expect(Object.keys(testReq.query).length).toBe(2)
     expect(testReq.query['three']).toBe('three')
@@ -211,7 +214,7 @@ describe('getMockReq', () => {
     const testReq = getMockReq({ body: { five: { six: 6 }, seven: [8, 9] } })
 
     // req.body has the provided arguments
-    expect(testReq.body).toBeTruthy()
+    expect(testReq.body).toBeDefined()
     expect(testReq.body).toBeInstanceOf(Object)
     expect(Object.keys(testReq.body).length).toBe(2)
     expect(testReq.body['five']).toEqual(expect.objectContaining({ six: 6 }))
@@ -228,12 +231,48 @@ describe('getMockReq', () => {
     })
 
     // req.headers has the provided arguments
-    expect(testReq.headers).toBeTruthy()
+    expect(testReq.headers).toBeDefined()
     expect(testReq.headers).toBeInstanceOf(Object)
     expect(Object.keys(testReq.headers).length).toBe(3)
     expect(testReq.headers['HeaderOne']).toBe('one')
     expect(testReq.headers['HeaderTwo']).toBe('two')
     expect(testReq.headers['HeaderThree']).toBe('three')
+  })
+
+  test('allows custom properties', () => {
+    interface User {
+      id: string
+      name: string
+    }
+    interface CustomRequest extends Request {
+      user: User
+    }
+
+    const mockUser: User = {
+      id: '123',
+      name: 'Bob',
+    }
+
+    const testReq = getMockReq<CustomRequest>({
+      user: mockUser,
+      query: {
+        id: '123',
+        limit: 10,
+        page: 2,
+      },
+    })
+
+    // req.user has the provided arguments
+    expect(testReq.user).toBeDefined()
+    expect(testReq.user).toBe(mockUser)
+
+    // req.query has the provided arguments
+    expect(testReq.query).toBeDefined()
+    expect(testReq.query).toBeInstanceOf(Object)
+    expect(Object.keys(testReq.query).length).toBe(3)
+    expect(testReq.query['id']).toBe('123')
+    expect(testReq.query['limit']).toBe(10)
+    expect(testReq.query['page']).toBe(2)
   })
 
   test('issue #6', () => {
@@ -252,16 +291,36 @@ describe('getMockReq', () => {
     })
 
     // req.query has the provided arguments
-    expect(testReq.query).toBeTruthy()
+    expect(testReq.query).toBeDefined()
     expect(testReq.query).toBeInstanceOf(Object)
     expect(Object.keys(testReq.query).length).toBe(2)
     expect(testReq.query['os']).toBe(AppOS.Android)
     expect(testReq.query['sellerId']).toBe('12345')
 
     // req.headers has the provided arguments
-    expect(testReq.headers).toBeTruthy()
+    expect(testReq.headers).toBeDefined()
     expect(testReq.headers).toBeInstanceOf(Object)
     expect(Object.keys(testReq.headers).length).toBe(1)
     expect(testReq.headers['Authorization']).toBe('token validtoken')
+  })
+
+  test('issue #27', () => {
+    interface CustomRequest extends Request {
+      locals: any
+      customProperty: string
+    }
+
+    const testReq = getMockReq<CustomRequest>({
+      locals: { var: 'hi there' },
+      customProperty: 'value',
+    })
+
+    // req.locals has the provided arguments
+    expect(testReq.locals).toBeDefined()
+    expect(testReq.locals).toEqual({ var: 'hi there' })
+
+    // req.customProperty has the provided arguments
+    expect(testReq.customProperty).toBeDefined()
+    expect(testReq.customProperty).toEqual('value')
   })
 })

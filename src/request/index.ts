@@ -54,4 +54,6 @@ export interface MockRequest extends MockIncomingMessage {
   app?: any
   res?: any
   next?: any
+  // allow custom properties to be provided
+  [key: string]: any
 }
