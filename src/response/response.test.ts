@@ -19,7 +19,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes()
 
     // res contains the expected functions
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     // express - Response
@@ -73,7 +73,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ headersSent: true })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.headersSent).toBe(true)
@@ -89,7 +89,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ locals: mockLocals })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.locals).toBe(mockLocals)
@@ -104,7 +104,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ charset: 'custom' })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.charset).toBe('custom')
@@ -120,7 +120,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ app: mockApp })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.app).toBe(mockApp)
@@ -136,7 +136,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ req: mockReq })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.req).toBe(mockReq)
@@ -151,7 +151,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ statusCode: 500 })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.statusCode).toBe(500)
@@ -166,7 +166,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ statusMessage: 'custom' })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.statusMessage).toBe('custom')
@@ -181,7 +181,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ upgrading: true })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.upgrading).toBe(true)
@@ -196,7 +196,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ chunkedEncoding: true })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.chunkedEncoding).toBe(true)
@@ -211,7 +211,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ shouldKeepAlive: true })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.shouldKeepAlive).toBe(true)
@@ -226,7 +226,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ useChunkedEncodingByDefault: true })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.useChunkedEncodingByDefault).toBe(true)
@@ -241,7 +241,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ sendDate: true })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.sendDate).toBe(true)
@@ -256,7 +256,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ finished: true })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.finished).toBe(true)
@@ -272,7 +272,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ connection: mockConnection })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.connection).toBe(mockConnection)
@@ -288,7 +288,7 @@ describe('getMockRes', () => {
     const { res } = getMockRes({ socket: mockSocket })
 
     // does not change the core res object
-    expect(res).toBeTruthy()
+    expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
 
     expect(res.socket).toBe(mockSocket)
@@ -318,7 +318,7 @@ describe('getMockRes', () => {
     const castedRes = (res as unknown) as CustomResponse
 
     // adds and extra property to the res object
-    expect(castedRes).toBeTruthy()
+    expect(castedRes).toBeDefined()
     expect(Object.keys(castedRes).length).toBe(DEFAULT_RES_KEY_LENGTH + 1)
 
     // both properties are available
@@ -330,7 +330,7 @@ describe('getMockRes', () => {
     const { next } = getMockRes()
 
     // next is part of the mock response
-    expect(next).toBeTruthy()
+    expect(next).toBeDefined()
     expect(typeof next).toBe('function')
   })
 
@@ -338,7 +338,7 @@ describe('getMockRes', () => {
     const { mockClear } = getMockRes()
 
     // a mock clear function is part of the mock response
-    expect(mockClear).toBeTruthy()
+    expect(mockClear).toBeDefined()
     expect(typeof mockClear).toBe('function')
   })
 
@@ -346,7 +346,7 @@ describe('getMockRes', () => {
     const { clearMockRes } = getMockRes()
 
     // a mock clear alias function is part of the mock response
-    expect(clearMockRes).toBeTruthy()
+    expect(clearMockRes).toBeDefined()
     expect(typeof clearMockRes).toBe('function')
   })
 
