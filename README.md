@@ -27,13 +27,13 @@ import { getMockReq, getMockRes } from '@jest-mock/express'
 
 ### Request - `getMockReq`
 
-`getMockReq` is intended to mock the `req` object as easily as possible. In its simplest form you can call it with no arguments to return a standard `req` with no values.
+`getMockReq` is intended to mock the `req` object as easily as possible. In its simplest form you can call it with no arguments to return a standard `req` object with mocked functions and default values values for properties.
 
 ```typescript
 const req = getMockReq()
 ```
 
-To create mock requests with values, you can simply provide them to the function in any order with all being optional. The advantage of this is that it ensures all of the other properties are not undefined. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `req` object.
+To create mock requests with specific values, you can simply provide them to the function in any order, with all being optional. The advantage of this is that it ensures the other properties are not undefined. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `req` object.
 
 ```typescript
 // an example GET request to retrieve an entity
@@ -68,7 +68,7 @@ beforeEach(() => {
 
 It will also provide a mock `next` function for convenience. That will also be cleared as part of the call to `mockClear`/`clearMockRes`.
 
-To create mock responses with values, you can simply provide them to the function in any order with all being optional. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `res` object.
+To create mock responses with values, you can simply provide them to the function in any order, with all being optional. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `res` object.
 
 ```typescript
 const { res, next, clearMockRes } = getMockRes({
