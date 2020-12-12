@@ -5,6 +5,9 @@ node_js:
   - 15
   - node
   - lts/*
+os:
+  - linux
+  - windows
 branches:
   only:
     - master
