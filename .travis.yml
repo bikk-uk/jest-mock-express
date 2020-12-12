@@ -12,5 +12,5 @@ branches:
 install:
   - yarn
 script:
-  - yarn lint
+  - yarn release
   - yarn test-coverage
