@@ -1,6 +1,11 @@
 language: node_js
 node_js:
-  - stable
+  - 11
+  - 12
+  - 14
+  - 15
+  - node
+  - lts/*
 branches:
   only:
     - master
