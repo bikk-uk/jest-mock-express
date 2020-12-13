@@ -1,11 +1,17 @@
 language: node_js
 node_js:
-  - stable
+  - 12
+  - 14
+  - 15
+  - node
+  - lts/*
+os:
+  - linux
 branches:
   only:
     - master
 install:
   - yarn
 script:
-  - yarn lint
+  - yarn release
   - yarn test-coverage
