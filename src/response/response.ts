@@ -66,6 +66,7 @@ export const getMockRes = (
     app,
     req,
     // http - ServerResponse
+    end: jest.fn(),
     assignSocket: jest.fn(),
     detachSocket: jest.fn(),
     writeContinue: jest.fn(),
@@ -145,6 +146,7 @@ export const getMockRes = (
     response.vary.mockClear()
     response.append.mockClear()
     // http - ServerResponse
+    response.end.mockClear()
     response.assignSocket.mockClear()
     response.detachSocket.mockClear()
     response.writeContinue.mockClear()
