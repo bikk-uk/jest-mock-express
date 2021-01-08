@@ -550,6 +550,20 @@ describe('getMockRes', () => {
     expect(res.addTrailers as jest.Mock).not.toBeCalled()
     expect(res.flushHeaders as jest.Mock).not.toBeCalled()
   })
+
+  test('issue #32', () => {
+    const statusCode = 404
+    const { res } = getMockRes()
+
+    res.status(statusCode).end()
+
+    // status is called
+    expect(res.status).toBeCalledTimes(1)
+    expect(res.status).toBeCalledWith(statusCode)
+    // chained end is called
+    expect(res.end).toBeCalledTimes(1)
+    expect(res.end).toBeCalledWith()
+  })
 })
 
 function callAll(res: Response) {
