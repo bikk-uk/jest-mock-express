@@ -5,7 +5,7 @@ import type { Response } from 'express'
 // Tested Module
 import getMockRes from './response'
 
-const DEFAULT_RES_KEY_LENGTH = 52
+const DEFAULT_RES_KEY_LENGTH = 53
 
 describe('getMockRes', () => {
   test('returns expected object', () => {
@@ -47,6 +47,7 @@ describe('getMockRes', () => {
     expect(typeof res.vary).toBe('function')
     expect(typeof res.append).toBe('function')
     // http - ServerResponse
+    expect(typeof res.end).toBe('function')
     expect(typeof res.assignSocket).toBe('function')
     expect(typeof res.detachSocket).toBe('function')
     expect(typeof res.writeContinue).toBe('function')
@@ -384,6 +385,7 @@ describe('getMockRes', () => {
     expect(res.vary as jest.Mock).toBeCalledTimes(1)
     expect(res.append as jest.Mock).toBeCalledTimes(1)
     // http - ServerResponse
+    expect(res.end as jest.Mock).toBeCalledTimes(1)
     expect(res.assignSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.detachSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.writeContinue as jest.Mock).toBeCalledTimes(1)
@@ -431,6 +433,7 @@ describe('getMockRes', () => {
     expect(res.vary as jest.Mock).not.toBeCalled()
     expect(res.append as jest.Mock).not.toBeCalled()
     // http - ServerResponse
+    expect(res.end as jest.Mock).not.toBeCalled()
     expect(res.assignSocket as jest.Mock).not.toBeCalled()
     expect(res.detachSocket as jest.Mock).not.toBeCalled()
     expect(res.writeContinue as jest.Mock).not.toBeCalled()
@@ -482,6 +485,7 @@ describe('getMockRes', () => {
     expect(res.vary as jest.Mock).toBeCalledTimes(1)
     expect(res.append as jest.Mock).toBeCalledTimes(1)
     // http - ServerResponse
+    expect(res.end as jest.Mock).toBeCalledTimes(1)
     expect(res.assignSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.detachSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.writeContinue as jest.Mock).toBeCalledTimes(1)
@@ -529,6 +533,7 @@ describe('getMockRes', () => {
     expect(res.vary as jest.Mock).not.toBeCalled()
     expect(res.append as jest.Mock).not.toBeCalled()
     // http - ServerResponse
+    expect(res.end as jest.Mock).not.toBeCalled()
     expect(res.assignSocket as jest.Mock).not.toBeCalled()
     expect(res.detachSocket as jest.Mock).not.toBeCalled()
     expect(res.writeContinue as jest.Mock).not.toBeCalled()
@@ -544,6 +549,20 @@ describe('getMockRes', () => {
     expect(res.removeHeader as jest.Mock).not.toBeCalled()
     expect(res.addTrailers as jest.Mock).not.toBeCalled()
     expect(res.flushHeaders as jest.Mock).not.toBeCalled()
+  })
+
+  test('issue #32', () => {
+    const statusCode = 404
+    const { res } = getMockRes()
+
+    res.status(statusCode).end()
+
+    // status is called
+    expect(res.status).toBeCalledTimes(1)
+    expect(res.status).toBeCalledWith(statusCode)
+    // chained end is called
+    expect(res.end).toBeCalledTimes(1)
+    expect(res.end).toBeCalledWith()
   })
 })
 
@@ -573,6 +592,7 @@ function callAll(res: Response) {
   res.vary('test')
   res.append('test')
   // http - ServerResponse
+  res.end()
   res.assignSocket({} as Socket)
   res.detachSocket({} as Socket)
   res.writeContinue()
