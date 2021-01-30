@@ -326,6 +326,26 @@ describe('getMockRes', () => {
     expect(res.user).toBe(mockUser)
   })
 
+  test('allows locals to be typed', () => {
+    interface CustomResponse extends Response {
+      locals: {
+        sessionId: string
+        isPremiumUser: boolean
+      }
+    }
+
+    const { res } = getMockRes<CustomResponse>({
+      locals: {
+        sessionId: 'abcdef',
+        isPremiumUser: false,
+      },
+    })
+
+    expect(res.locals).toBeDefined()
+    expect(res.locals.sessionId).toBe('abcdef')
+    expect(res.locals.isPremiumUser).toBe(false)
+  })
+
   test('the mock next function is provided', () => {
     const { next } = getMockRes()
 
