@@ -5,8 +5,11 @@ import { Response, NextFunction } from 'express'
 import type { MockResponse } from './index'
 
 /**
- * Will return a typed and mocked version of key Express components.
- * mockClear() or clearMockRes() will clear all internal jest functions.
+ * Returns a mocked version of key **Express** components, including:
+ * - a mocked **Express** `Response`, with mocked functions (chainable) and default values.
+ * - a mocked `next()` convenience function.
+ * - `mockClear()` to clear all internal **Jest** functions including `next()`
+ * - `clearMockRes()` an alias for `mockClear()`
  */
 export const getMockRes = <T extends Response>(
   values: MockResponse = {},

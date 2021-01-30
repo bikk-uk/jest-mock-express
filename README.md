@@ -27,13 +27,13 @@ import { getMockReq, getMockRes } from '@jest-mock/express'
 
 ### Request - `getMockReq`
 
-`getMockReq` is intended to mock the `req` object as easily as possible. In its simplest form you can call it with no arguments to return a standard `req` object with mocked functions and default values for properties.
+`getMockReq` is intended to mock the `req` object as quickly as possible. In its simplest form, you can call it with no arguments to return a standard `req` object with mocked functions and default values for properties.
 
 ```typescript
 const req = getMockReq()
 ```
 
-To create mock requests with specific values, you can simply provide them to the function in any order, with all being optional. The advantage of this is that it ensures the other properties are not undefined. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `req` object.
+To create a mock `req` with provided values, you can pass them to the function in any order, with all being optional. The advantage of this is that it ensures the other properties are not `undefined`. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `req` object.
 
 ```typescript
 // an example GET request to retrieve an entity
@@ -48,9 +48,22 @@ const req = getMockReq({
 })
 ```
 
+For use with extended Requests, `getMockReq` supports generics.
+
+```typescript
+interface AuthenticatedRequest extends Request {
+  user: User
+}
+
+const req = getMockReq<AuthenticatedRequest>({ user: mockUser })
+
+// req.user is typed
+expect(req.user).toBe(mockUser)
+```
+
 ### Response - `getMockRes`
 
-`getMockRes` will provide a `res` object with Jest mock functions. Chaining has been implemented for the applicable functions.
+`getMockRes` will return a mocked `res` object with Jest mock functions. Chaining has been implemented for the applicable functions.
 
 ```typescript
 const { res, next, clearMockRes } = getMockRes()
@@ -62,13 +75,13 @@ All of the returned mock functions can be cleared with a single call to `mockCle
 const { res, next, clearMockRes } = getMockRes()
 
 beforeEach(() => {
-  clearMockRes()
+  mockClear() // can also use clearMockRes()
 })
 ```
 
-It will also provide a mock `next` function for convenience. That will also be cleared as part of the call to `mockClear`/`clearMockRes`.
+It will also return a mock `next` function for convenience. `next` will also be cleared as part of the call to `mockClear`/`clearMockRes`.
 
-To create mock responses with values, you can simply provide them to the function in any order, with all being optional. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `res` object.
+To create mock responses with provided values, you can provide them to the function in any order, with all being optional. Loose type definitions for standard properties are provided, custom properties (`[key: string]: any`) will be passed through to the returned `res` object.
 
 ```typescript
 const { res, next, clearMockRes } = getMockRes({
@@ -78,9 +91,31 @@ const { res, next, clearMockRes } = getMockRes({
 })
 ```
 
-### Example
+For use with extended Responses, `getMockRes` supports generics.
 
-A full example could be:
+```typescript
+interface CustomResponse extends Response {
+  locals: {
+    sessionId?: string
+    isPremiumUser?: boolean
+  }
+}
+
+const { res } = getMockRes<CustomResponse>({
+  locals: {
+    sessionId: 'abcdef',
+    isPremiumUser: false,
+  },
+})
+
+// res.locals is typed
+expect(res.locals.sessionId).toBe('abcdef')
+expect(res.locals.isPremiumUser).toBe(false)
+```
+
+## Example
+
+A full example to test a controller could be:
 
 ```typescript
 // generate a mocked response and next function, with provided values

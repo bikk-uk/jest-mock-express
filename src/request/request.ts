@@ -4,6 +4,9 @@ import { Request } from 'express'
 // Types
 import type { MockRequest } from './index'
 
+/**
+ * Returns a mocked **Express** `Request` with mocked functions and default values.
+ */
 export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
   const {
     params = {},

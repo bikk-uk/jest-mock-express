@@ -295,11 +295,12 @@ describe('getMockRes', () => {
     expect(res.socket).toBe(mockSocket)
   })
 
-  test('allows custom properties, with casting', () => {
+  test('allows custom properties', () => {
     interface User {
       id: string
       name: string
     }
+
     interface CustomResponse extends Response {
       user: User
     }
@@ -309,22 +310,40 @@ describe('getMockRes', () => {
       name: 'Bob',
     }
 
-    // default value is not provided
-    const { res: defaultRes } = getMockRes()
-    const castedDefaultRes = (defaultRes as unknown) as CustomResponse
-    expect(castedDefaultRes.user).toBeUndefined()
+    // default value is not provided, but is typed
+    const { res: defaultRes } = getMockRes<CustomResponse>()
+    expect(defaultRes.user).toBeUndefined()
 
     // allows setting a custom property
-    const { res } = getMockRes({ sendDate: true, user: mockUser })
-    const castedRes = (res as unknown) as CustomResponse
+    const { res } = getMockRes<CustomResponse>({ sendDate: true, user: mockUser })
 
     // adds and extra property to the res object
-    expect(castedRes).toBeDefined()
-    expect(Object.keys(castedRes).length).toBe(DEFAULT_RES_KEY_LENGTH + 1)
+    expect(res).toBeDefined()
+    expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH + 1)
 
     // both properties are available
-    expect(castedRes.sendDate).toBe(true)
-    expect(castedRes.user).toBe(mockUser)
+    expect(res.sendDate).toBe(true)
+    expect(res.user).toBe(mockUser)
+  })
+
+  test('allows locals to be typed', () => {
+    interface CustomResponse extends Response {
+      locals: {
+        sessionId?: string
+        isPremiumUser?: boolean
+      }
+    }
+
+    const { res } = getMockRes<CustomResponse>({
+      locals: {
+        sessionId: 'abcdef',
+        isPremiumUser: false,
+      },
+    })
+
+    expect(res.locals).toBeDefined()
+    expect(res.locals.sessionId).toBe('abcdef')
+    expect(res.locals.isPremiumUser).toBe(false)
   })
 
   test('the mock next function is provided', () => {
