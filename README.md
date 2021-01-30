@@ -72,7 +72,7 @@ const { res, next, clearMockRes } = getMockRes()
 All of the returned mock functions can be cleared with a single call to `mockClear`. An alias is also provided called `clearMockRes`.
 
 ```typescript
-const { res, next, clearMockRes } = getMockRes()
+const { res, next, mockClear } = getMockRes()
 
 beforeEach(() => {
   mockClear() // can also use clearMockRes()
