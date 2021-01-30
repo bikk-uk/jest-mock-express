@@ -329,8 +329,8 @@ describe('getMockRes', () => {
   test('allows locals to be typed', () => {
     interface CustomResponse extends Response {
       locals: {
-        sessionId: string
-        isPremiumUser: boolean
+        sessionId?: string
+        isPremiumUser?: boolean
       }
     }
 
