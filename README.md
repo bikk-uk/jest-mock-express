@@ -96,8 +96,8 @@ For use with extended Responses, `getMockRes` supports generics.
 ```typescript
 interface CustomResponse extends Response {
   locals: {
-    sessionId: string
-    isPremiumUser: boolean
+    sessionId?: string
+    isPremiumUser?: boolean
   }
 }
 
