@@ -2,7 +2,7 @@
 
 A lightweight Jest mock for unit testing Express
 
-[![Build Status](https://travis-ci.org/bikk-uk/jest-mock-express.svg?branch=master)](https://travis-ci.org/bikk-uk/jest-mock-express)
+[![Build and Test](https://github.com/bikk-uk/jest-mock-express/actions/workflows/build-test.yml/badge.svg?branch=master)](https://github.com/bikk-uk/jest-mock-express/actions/workflows/build-test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/bikk-uk/jest-mock-express/badge.svg?branch=master)](https://coveralls.io/github/bikk-uk/jest-mock-express?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/bikk-uk/jest-mock-express/badge.svg?targetFile=package.json)](https://snyk.io/test/github/bikk-uk/jest-mock-express?targetFile=package.json)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/bikk-uk/jest-mock-express?label=github)
