@@ -168,7 +168,7 @@ export const getMockRes = <T extends Response>(
   }
 
   return {
-    res: (response as unknown) as T,
+    res: response as unknown as T,
     next: next as NextFunction,
     mockClear: clearAllMocks,
     clearMockRes: clearAllMocks,
