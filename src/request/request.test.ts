@@ -127,7 +127,7 @@ describe('getMockReq', () => {
     expect(Object.keys(testReq.app).length).toBe(0)
 
     // req.res is a mocked function
-    expect(((testReq.res as unknown) as jest.Mock).getMockName()).toBe('res mock default')
+    expect((testReq.res as unknown as jest.Mock).getMockName()).toBe('res mock default')
 
     // req.next is a mocked function
     expect((testReq.next as jest.Mock).getMockName()).toBe('next mock default')
