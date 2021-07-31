@@ -1,6 +1,6 @@
 {
   "name": "@jest-mock/express",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A lightweight Jest mock for unit testing Express",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -39,18 +39,18 @@
   },
   "homepage": "https://github.com/bikk-uk/jest-mock-express#readme",
   "devDependencies": {
-    "@types/express": "^4.17.12",
-    "@types/jest": "^26.0.23",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
-    "eslint": "^7.28.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^26.6.3",
-    "prettier": "^2.3.1",
+    "prettier": "^2.3.2",
     "snyk": "^1.667.0",
     "ts-jest": "^26.5.4",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.5"
   },
   "dependencies": {},
   "snyk": true
