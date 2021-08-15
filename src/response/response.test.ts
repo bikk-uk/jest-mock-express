@@ -1,5 +1,5 @@
 // Types
-import type { Socket } from 'net'
+import { Socket } from 'net'
 import type { Response } from 'express'
 
 // Tested Module
@@ -21,48 +21,318 @@ describe('getMockRes', () => {
     // res contains the expected functions
     expect(res).toBeDefined()
     expect(Object.keys(res).length).toBe(DEFAULT_RES_KEY_LENGTH)
+  })
 
-    // express - Response
-    expect(typeof res.status).toBe('function')
-    expect(typeof res.sendStatus).toBe('function')
-    expect(typeof res.links).toBe('function')
-    expect(typeof res.send).toBe('function')
-    expect(typeof res.json).toBe('function')
-    expect(typeof res.jsonp).toBe('function')
-    expect(typeof res.sendFile).toBe('function')
-    expect(typeof res.sendfile).toBe('function')
-    expect(typeof res.download).toBe('function')
-    expect(typeof res.contentType).toBe('function')
-    expect(typeof res.type).toBe('function')
-    expect(typeof res.format).toBe('function')
-    expect(typeof res.attachment).toBe('function')
-    expect(typeof res.set).toBe('function')
-    expect(typeof res.header).toBe('function')
-    expect(typeof res.get).toBe('function')
-    expect(typeof res.clearCookie).toBe('function')
-    expect(typeof res.cookie).toBe('function')
-    expect(typeof res.location).toBe('function')
-    expect(typeof res.redirect).toBe('function')
-    expect(typeof res.render).toBe('function')
-    expect(typeof res.vary).toBe('function')
-    expect(typeof res.append).toBe('function')
-    // http - ServerResponse
-    expect(typeof res.end).toBe('function')
-    expect(typeof res.assignSocket).toBe('function')
-    expect(typeof res.detachSocket).toBe('function')
-    expect(typeof res.writeContinue).toBe('function')
-    expect(typeof res.writeHead).toBe('function')
-    expect(typeof res.writeProcessing).toBe('function')
-    // http - OutgoingMessage
-    expect(typeof res.setTimeout).toBe('function')
-    expect(typeof res.setHeader).toBe('function')
-    expect(typeof res.getHeader).toBe('function')
-    expect(typeof res.getHeaders).toBe('function')
-    expect(typeof res.getHeaderNames).toBe('function')
-    expect(typeof res.hasHeader).toBe('function')
-    expect(typeof res.removeHeader).toBe('function')
-    expect(typeof res.addTrailers).toBe('function')
-    expect(typeof res.flushHeaders).toBe('function')
+  describe('mocked functions from "express - Response"', () => {
+    test('status function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.status).toBe('function')
+
+      expect(res.status(123)).toBe(res)
+    })
+
+    test('sendStatus function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.sendStatus).toBe('function')
+
+      expect(res.sendStatus(123)).toBe(res)
+    })
+
+    test('links function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.links).toBe('function')
+
+      expect(res.links(1)).toBe(res)
+    })
+
+    test('send function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.send).toBe('function')
+
+      expect(res.send()).toBe(res)
+    })
+
+    test('json function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.json).toBe('function')
+
+      expect(res.json()).toBe(res)
+    })
+
+    test('jsonp function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.jsonp).toBe('function')
+
+      expect(res.jsonp()).toBe(res)
+    })
+
+    test('sendFile function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.sendFile).toBe('function')
+
+      expect(res.sendFile('test')).toBeUndefined()
+    })
+
+    test('sendfile function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.sendfile).toBe('function')
+
+      expect(res.sendfile('test')).toBeUndefined()
+    })
+
+    test('download function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.download).toBe('function')
+
+      expect(res.download('test')).toBeUndefined()
+    })
+
+    test('contentType function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.contentType).toBe('function')
+
+      expect(res.contentType('test')).toBe(res)
+    })
+
+    test('type function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.type).toBe('function')
+
+      expect(res.type('test')).toBe(res)
+    })
+
+    test('format function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.format).toBe('function')
+
+      expect(res.format('test')).toBe(res)
+    })
+
+    test('attachment function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.attachment).toBe('function')
+
+      expect(res.attachment()).toBe(res)
+    })
+
+    test('set function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.set).toBe('function')
+
+      expect(res.set('test')).toBe(res)
+    })
+
+    test('header function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.header).toBe('function')
+
+      expect(res.header('test')).toBe(res)
+    })
+
+    test('get function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.get).toBe('function')
+
+      expect(res.get('test')).toBeUndefined()
+    })
+
+    test('clearCookie function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.clearCookie).toBe('function')
+
+      expect(res.clearCookie('test')).toBe(res)
+    })
+
+    test('cookie function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.cookie).toBe('function')
+
+      expect(res.cookie('test', 'test two')).toBe(res)
+    })
+
+    test('location function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.location).toBe('function')
+
+      expect(res.location('test')).toBe(res)
+    })
+
+    test('redirect function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.redirect).toBe('function')
+
+      expect(res.redirect('test')).toBeUndefined()
+    })
+
+    test('render function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.render).toBe('function')
+
+      expect(res.render('test')).toBeUndefined()
+    })
+
+    test('vary function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.vary).toBe('function')
+
+      expect(res.vary('test')).toBe(res)
+    })
+
+    test('append function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.append).toBe('function')
+
+      expect(res.append('test')).toBe(res)
+    })
+  })
+
+  describe('mocked functions from "http - ServerResponse"', () => {
+    test('end function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.end).toBe('function')
+
+      expect(res.end()).toBeUndefined()
+    })
+
+    test('assignSocket function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.assignSocket).toBe('function')
+
+      const socket = new Socket()
+      expect(res.assignSocket(socket)).toBeUndefined()
+    })
+
+    test('detachSocket function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.detachSocket).toBe('function')
+
+      const socket = new Socket()
+      expect(res.detachSocket(socket)).toBeUndefined()
+    })
+
+    test('writeContinue function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.writeContinue).toBe('function')
+
+      expect(res.writeContinue()).toBeUndefined()
+    })
+
+    test('writeHead function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.writeHead).toBe('function')
+
+      expect(res.writeHead(200)).toBe(res)
+    })
+
+    test('writeProcessing function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.writeProcessing).toBe('function')
+
+      expect(res.writeProcessing()).toBeUndefined()
+    })
+  })
+
+  describe('mocked functions from "http - OutgoingMessage"', () => {
+    test('setTimeout function is provided and chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.setTimeout).toBe('function')
+
+      expect(res.setTimeout(1000)).toBe(res)
+    })
+
+    test('setHeader function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.setHeader).toBe('function')
+
+      expect(res.setHeader('test', 'test two')).toBeUndefined()
+    })
+
+    test('getHeader function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.getHeader).toBe('function')
+
+      expect(res.getHeader('test')).toBeUndefined()
+    })
+
+    test('getHeaders function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.getHeaders).toBe('function')
+
+      expect(res.getHeaders()).toBeUndefined()
+    })
+
+    test('getHeaderNames function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.getHeaderNames).toBe('function')
+
+      expect(res.getHeaderNames()).toBeUndefined()
+    })
+
+    test('hasHeader function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.hasHeader).toBe('function')
+
+      expect(res.hasHeader('test')).toBeUndefined()
+    })
+
+    test('removeHeader function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.removeHeader).toBe('function')
+
+      expect(res.removeHeader('test')).toBeUndefined()
+    })
+
+    test('addTrailers function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.addTrailers).toBe('function')
+
+      expect(res.addTrailers([])).toBeUndefined()
+    })
+
+    test('flushHeaders function is provided and is not chainable', () => {
+      const { res } = getMockRes()
+
+      expect(typeof res.flushHeaders).toBe('function')
+
+      expect(res.flushHeaders()).toBeUndefined()
+    })
   })
 
   test('provides default for, and allows overrides for headersSent', () => {
