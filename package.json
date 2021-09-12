@@ -1,6 +1,6 @@
 {
   "name": "@jest-mock/express",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "A lightweight Jest mock for unit testing Express",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,7 +48,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
-    "snyk": "^1.681.0",
+    "snyk": "^1.706.0",
     "ts-jest": "^27.0.4",
     "typescript": "^4.3.5"
   },
