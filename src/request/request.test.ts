@@ -4,6 +4,8 @@ import type { Request } from 'express'
 // Tested Module
 import getMockReq from './request'
 
+const DEFAULT_REQ_KEY_LENGTH = 49
+
 describe('getMockReq', () => {
   describe('accepts no arguments and return default values', () => {
     test('the request contains values', () => {
@@ -11,7 +13,7 @@ describe('getMockReq', () => {
 
       expect(req).toBeDefined()
       expect(req).toBeInstanceOf(Object)
-      expect(Object.keys(req).length).toBe(49)
+      expect(Object.keys(req).length).toBe(DEFAULT_REQ_KEY_LENGTH)
     })
 
     test('req.params is an empty object', () => {
