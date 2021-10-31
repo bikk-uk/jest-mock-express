@@ -5,224 +5,371 @@ import type { Request } from 'express'
 import getMockReq from './request'
 
 describe('getMockReq', () => {
-  test('accepts no arguments and return default values', () => {
-    const testReq = getMockReq()
+  describe('accepts no arguments and return default values', () => {
+    test('the request contains values', () => {
+      const req = getMockReq()
 
-    // the request contains values
-    expect(testReq).toBeDefined()
-    expect(testReq).toBeInstanceOf(Object)
-    expect(Object.keys(testReq).length).toBe(49)
+      expect(req).toBeDefined()
+      expect(req).toBeInstanceOf(Object)
+      expect(Object.keys(req).length).toBe(49)
+    })
 
-    // req.params is an empty object
-    expect(testReq.params).toBeDefined()
-    expect(testReq.params).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.params).length).toBe(0)
+    test('req.params is an empty object', () => {
+      const req = getMockReq()
 
-    // req.query is an empty object
-    expect(testReq.query).toBeDefined()
-    expect(testReq.query).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.query).length).toBe(0)
+      expect(req.params).toBeDefined()
+      expect(req.params).toBeInstanceOf(Object)
+      expect(Object.keys(req.params).length).toBe(0)
+    })
 
-    // req.body is an empty object
-    expect(testReq.body).toBeDefined()
-    expect(testReq.body).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.body).length).toBe(0)
+    test('req.query is an empty object', () => {
+      const req = getMockReq()
 
-    // req.cookies is an empty object
-    expect(testReq.cookies).toBeDefined()
-    expect(testReq.cookies).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.cookies).length).toBe(0)
+      expect(req.query).toBeDefined()
+      expect(req.query).toBeInstanceOf(Object)
+      expect(Object.keys(req.query).length).toBe(0)
+    })
+    test('req.body is an empty object', () => {
+      const req = getMockReq()
 
-    // req.method is an empty string
-    expect(testReq.method).toBe('')
+      expect(req.body).toBeDefined()
+      expect(req.body).toBeInstanceOf(Object)
+      expect(Object.keys(req.body).length).toBe(0)
+    })
 
-    // req.protocol is an empty string
-    expect(testReq.protocol).toBe('')
+    test('req.cookies is an empty object', () => {
+      const req = getMockReq()
 
-    // req.secure is a boolean
-    expect(testReq.secure).toBe(false)
+      expect(req.cookies).toBeDefined()
+      expect(req.cookies).toBeInstanceOf(Object)
+      expect(Object.keys(req.cookies).length).toBe(0)
+    })
 
-    // req.ip is an empty string
-    expect(testReq.ip).toBe('')
+    test('req.method is an empty string', () => {
+      const req = getMockReq()
 
-    // req.ips is an empty array
-    expect(Array.isArray(testReq.ips)).toBe(true)
-    expect(testReq.ips.length).toBe(0)
+      expect(req.method).toBe('')
+    })
 
-    // req.subdomains is an empty array
-    expect(Array.isArray(testReq.subdomains)).toBe(true)
-    expect(testReq.subdomains.length).toBe(0)
+    test('req.protocol is an empty string', () => {
+      const req = getMockReq()
 
-    // req.path is an empty string
-    expect(testReq.path).toBe('')
+      expect(req.protocol).toBe('')
+    })
 
-    // req.hostname is an empty string
-    expect(testReq.hostname).toBe('')
+    test('req.secure is a boolean', () => {
+      const req = getMockReq()
 
-    // req.host is an empty string
-    expect(testReq.host).toBe('')
+      expect(req.secure).toBe(false)
+    })
 
-    // req.fresh is a boolean
-    expect(testReq.fresh).toBe(false)
+    test('req.ip is an empty string', () => {
+      const req = getMockReq()
 
-    // req.stale is a boolean
-    expect(testReq.stale).toBe(false)
+      expect(req.ip).toBe('')
+    })
 
-    // req.xhr is a boolean
-    expect(testReq.xhr).toBe(false)
+    test('req.ips is an empty array', () => {
+      const req = getMockReq()
 
-    // req.route is an empty object
-    expect(testReq.route).toBeDefined()
-    expect(testReq.route).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.route).length).toBe(0)
+      expect(Array.isArray(req.ips)).toBe(true)
+      expect(req.ips.length).toBe(0)
+    })
 
-    // req.signedCookies is an empty object
-    expect(testReq.signedCookies).toBeDefined()
-    expect(testReq.signedCookies).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.signedCookies).length).toBe(0)
+    test('req.subdomains is an empty array', () => {
+      const req = getMockReq()
 
-    // req.originalUrl is an empty string
-    expect(testReq.originalUrl).toBe('')
+      expect(Array.isArray(req.subdomains)).toBe(true)
+      expect(req.subdomains.length).toBe(0)
+    })
 
-    // req.url is an empty string
-    expect(testReq.url).toBe('')
+    test('req.path is an empty string', () => {
+      const req = getMockReq()
 
-    // req.baseUrl is an empty string
-    expect(testReq.baseUrl).toBe('')
+      expect(req.path).toBe('')
+    })
 
-    // req.accepted is an empty array
-    expect(Array.isArray(testReq.accepted)).toBe(true)
-    expect(testReq.accepted.length).toBe(0)
+    test('req.hostname is an empty string', () => {
+      const req = getMockReq()
 
-    // req.get is a mocked function
-    expect((testReq.get as jest.Mock).getMockName()).toBe('get mock default')
+      expect(req.hostname).toBe('')
+    })
 
-    // req.header is a mocked function
-    expect((testReq.header as jest.Mock).getMockName()).toBe('header mock default')
+    test('req.host is an empty string', () => {
+      const req = getMockReq()
 
-    // req.accepts is a mocked function
-    expect((testReq.accepts as jest.Mock).getMockName()).toBe('accepts mock default')
+      expect(req.host).toBe('')
+    })
 
-    // req.acceptsCharsets is a mocked function
-    expect((testReq.acceptsCharsets as jest.Mock).getMockName()).toBe('acceptsCharsets mock default')
+    test('req.fresh is a boolean', () => {
+      const req = getMockReq()
 
-    // req.acceptsEncodings is a mocked function
-    expect((testReq.acceptsEncodings as jest.Mock).getMockName()).toBe('acceptsEncodings mock default')
+      expect(req.fresh).toBe(false)
+    })
 
-    // req.acceptsLanguages is a mocked function
-    expect((testReq.acceptsLanguages as jest.Mock).getMockName()).toBe('acceptsLanguages mock default')
+    test('req.stale is a boolean', () => {
+      const req = getMockReq()
 
-    // req.range is a mocked function
-    expect((testReq.range as jest.Mock).getMockName()).toBe('range mock default')
+      expect(req.stale).toBe(false)
+    })
 
-    // req.param is a mocked function
-    expect((testReq.param as jest.Mock).getMockName()).toBe('param mock default')
+    test('req.xhr is a boolean', () => {
+      const req = getMockReq()
 
-    // req.is is a mocked function
-    expect((testReq.is as jest.Mock).getMockName()).toBe('is mock default')
+      expect(req.xhr).toBe(false)
+    })
 
-    // req.app is an empty object
-    expect(testReq.app).toBeDefined()
-    expect(testReq.app).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.app).length).toBe(0)
+    test('req.route is an empty object', () => {
+      const req = getMockReq()
 
-    // req.res is a mocked function
-    expect((testReq.res as unknown as jest.Mock).getMockName()).toBe('res mock default')
+      expect(req.route).toBeDefined()
+      expect(req.route).toBeInstanceOf(Object)
+      expect(Object.keys(req.route).length).toBe(0)
+    })
 
-    // req.next is a mocked function
-    expect((testReq.next as jest.Mock).getMockName()).toBe('next mock default')
+    test('req.signedCookies is an empty object', () => {
+      const req = getMockReq()
 
-    // req.aborted is a boolean
-    expect(testReq.aborted).toBe(false)
+      expect(req.signedCookies).toBeDefined()
+      expect(req.signedCookies).toBeInstanceOf(Object)
+      expect(Object.keys(req.signedCookies).length).toBe(0)
+    })
 
-    // req.httpVersion is an empty string
-    expect(testReq.httpVersion).toBe('')
+    test('req.originalUrl is an empty string', () => {
+      const req = getMockReq()
 
-    // req.httpVersionMajor is a number
-    expect(testReq.httpVersionMajor).toBe(0)
+      expect(req.originalUrl).toBe('')
+    })
 
-    // req.httpVersionMinor is a number
-    expect(testReq.httpVersionMinor).toBe(0)
+    test('req.url is an empty string', () => {
+      const req = getMockReq()
 
-    // req.complete is a boolean
-    expect(testReq.complete).toBe(false)
+      expect(req.url).toBe('')
+    })
 
-    // req.connection is an empty object
-    expect(testReq.connection).toBeDefined()
-    expect(testReq.connection).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.connection).length).toBe(0)
+    test('req.baseUrl is an empty string', () => {
+      const req = getMockReq()
 
-    // req.socket is an empty object
-    expect(testReq.socket).toBeDefined()
-    expect(testReq.socket).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.socket).length).toBe(0)
+      expect(req.baseUrl).toBe('')
+    })
 
-    // req.headers is an empty object
-    expect(testReq.headers).toBeDefined()
-    expect(testReq.headers).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.headers).length).toBe(0)
+    test('req.accepted is an empty array', () => {
+      const req = getMockReq()
 
-    // req.rawHeaders is an empty array
-    expect(Array.isArray(testReq.rawHeaders)).toBe(true)
-    expect(testReq.rawHeaders.length).toBe(0)
+      expect(Array.isArray(req.accepted)).toBe(true)
+      expect(req.accepted.length).toBe(0)
+    })
 
-    // req.trailers is an empty object
-    expect(testReq.trailers).toBeDefined()
-    expect(testReq.trailers).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.trailers).length).toBe(0)
+    test('req.get is a mocked function', () => {
+      const req = getMockReq()
 
-    // req.rawTrailers is an empty array
-    expect(Array.isArray(testReq.rawTrailers)).toBe(true)
-    expect(testReq.rawTrailers.length).toBe(0)
+      expect((req.get as jest.Mock).getMockName()).toBe('get mock default')
+    })
 
-    // req.setTimeout is a mocked function
-    expect((testReq.setTimeout as jest.Mock).getMockName()).toBe('setTimeout mock default')
+    test('req.header is a mocked function', () => {
+      const req = getMockReq()
 
-    // req.statusCode is a number
-    expect(testReq.statusCode).toBe(0)
+      expect((req.header as jest.Mock).getMockName()).toBe('header mock default')
+    })
 
-    // req.statusMessage is an empty string
-    expect(testReq.statusMessage).toBe('')
+    test('req.accepts is a mocked function', () => {
+      const req = getMockReq()
 
-    // req.destroy is a mocked function
-    expect((testReq.destroy as jest.Mock).getMockName()).toBe('destroy mock default')
+      expect((req.accepts as jest.Mock).getMockName()).toBe('accepts mock default')
+    })
+
+    test('req.acceptsCharsets is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.acceptsCharsets as jest.Mock).getMockName()).toBe('acceptsCharsets mock default')
+    })
+
+    test('req.acceptsEncodings is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.acceptsEncodings as jest.Mock).getMockName()).toBe('acceptsEncodings mock default')
+    })
+
+    test('req.acceptsLanguages is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.acceptsLanguages as jest.Mock).getMockName()).toBe('acceptsLanguages mock default')
+    })
+
+    test('req.range is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.range as jest.Mock).getMockName()).toBe('range mock default')
+    })
+
+    test('req.param is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.param as jest.Mock).getMockName()).toBe('param mock default')
+    })
+
+    test('req.is is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.is as jest.Mock).getMockName()).toBe('is mock default')
+    })
+
+    test('req.app is an empty object', () => {
+      const req = getMockReq()
+
+      expect(req.app).toBeDefined()
+      expect(req.app).toBeInstanceOf(Object)
+      expect(Object.keys(req.app).length).toBe(0)
+    })
+
+    test('req.res is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.res as unknown as jest.Mock).getMockName()).toBe('res mock default')
+    })
+
+    test('req.next is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.next as jest.Mock).getMockName()).toBe('next mock default')
+    })
+
+    test('req.aborted is a boolean', () => {
+      const req = getMockReq()
+
+      expect(req.aborted).toBe(false)
+    })
+
+    test('req.httpVersion is an empty string', () => {
+      const req = getMockReq()
+
+      expect(req.httpVersion).toBe('')
+    })
+
+    test('req.httpVersionMajor is a number', () => {
+      const req = getMockReq()
+
+      expect(req.httpVersionMajor).toBe(0)
+    })
+
+    test('req.httpVersionMinor is a number', () => {
+      const req = getMockReq()
+
+      expect(req.httpVersionMinor).toBe(0)
+    })
+
+    test('req.complete is a boolean', () => {
+      const req = getMockReq()
+
+      expect(req.complete).toBe(false)
+    })
+
+    test('req.connection is an empty object', () => {
+      const req = getMockReq()
+
+      expect(req.connection).toBeDefined()
+      expect(req.connection).toBeInstanceOf(Object)
+      expect(Object.keys(req.connection).length).toBe(0)
+    })
+
+    test('req.socket is an empty object', () => {
+      const req = getMockReq()
+
+      expect(req.socket).toBeDefined()
+      expect(req.socket).toBeInstanceOf(Object)
+      expect(Object.keys(req.socket).length).toBe(0)
+    })
+
+    test('req.headers is an empty object', () => {
+      const req = getMockReq()
+
+      expect(req.headers).toBeDefined()
+      expect(req.headers).toBeInstanceOf(Object)
+      expect(Object.keys(req.headers).length).toBe(0)
+    })
+
+    test('req.rawHeaders is an empty array', () => {
+      const req = getMockReq()
+
+      expect(Array.isArray(req.rawHeaders)).toBe(true)
+      expect(req.rawHeaders.length).toBe(0)
+    })
+
+    test('req.trailers is an empty object', () => {
+      const req = getMockReq()
+
+      expect(req.trailers).toBeDefined()
+      expect(req.trailers).toBeInstanceOf(Object)
+      expect(Object.keys(req.trailers).length).toBe(0)
+    })
+
+    test('req.rawTrailers is an empty array', () => {
+      const req = getMockReq()
+
+      expect(Array.isArray(req.rawTrailers)).toBe(true)
+      expect(req.rawTrailers.length).toBe(0)
+    })
+
+    test('req.setTimeout is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.setTimeout as jest.Mock).getMockName()).toBe('setTimeout mock default')
+    })
+
+    test('req.statusCode is a number', () => {
+      const req = getMockReq()
+
+      expect(req.statusCode).toBe(0)
+    })
+
+    test('req.statusMessage is an empty string', () => {
+      const req = getMockReq()
+
+      expect(req.statusMessage).toBe('')
+    })
+
+    test('req.destroy is a mocked function', () => {
+      const req = getMockReq()
+
+      expect((req.destroy as jest.Mock).getMockName()).toBe('destroy mock default')
+    })
   })
 
   test('returns provided params', () => {
-    const testReq = getMockReq({ params: { one: 1, two: 2 } })
+    const req = getMockReq({ params: { one: 1, two: 2 } })
 
     // req.params has the provided arguments
-    expect(testReq.params).toBeDefined()
-    expect(testReq.params).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.params).length).toBe(2)
-    expect(testReq.params['one']).toBe(1)
-    expect(testReq.params['two']).toBe(2)
+    expect(req.params).toBeDefined()
+    expect(req.params).toBeInstanceOf(Object)
+    expect(Object.keys(req.params).length).toBe(2)
+    expect(req.params['one']).toBe(1)
+    expect(req.params['two']).toBe(2)
   })
 
   test('returns provided query', () => {
-    const testReq = getMockReq({ query: { three: 'three', four: 'four' } })
+    const req = getMockReq({ query: { three: 'three', four: 'four' } })
 
     // req.query has the provided arguments
-    expect(testReq.query).toBeDefined()
-    expect(testReq.query).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.query).length).toBe(2)
-    expect(testReq.query['three']).toBe('three')
-    expect(testReq.query['four']).toBe('four')
+    expect(req.query).toBeDefined()
+    expect(req.query).toBeInstanceOf(Object)
+    expect(Object.keys(req.query).length).toBe(2)
+    expect(req.query['three']).toBe('three')
+    expect(req.query['four']).toBe('four')
   })
 
   test('returns provided body', () => {
-    const testReq = getMockReq({ body: { five: { six: 6 }, seven: [8, 9] } })
+    const req = getMockReq({ body: { five: { six: 6 }, seven: [8, 9] } })
 
     // req.body has the provided arguments
-    expect(testReq.body).toBeDefined()
-    expect(testReq.body).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.body).length).toBe(2)
-    expect(testReq.body['five']).toEqual(expect.objectContaining({ six: 6 }))
-    expect(testReq.body['seven']).toEqual(expect.arrayContaining([8, 9]))
+    expect(req.body).toBeDefined()
+    expect(req.body).toBeInstanceOf(Object)
+    expect(Object.keys(req.body).length).toBe(2)
+    expect(req.body['five']).toEqual(expect.objectContaining({ six: 6 }))
+    expect(req.body['seven']).toEqual(expect.arrayContaining([8, 9]))
   })
 
   test('returns provided headers', () => {
-    const testReq = getMockReq({
+    const req = getMockReq({
       headers: {
         HeaderOne: 'one',
         HeaderTwo: 'two',
@@ -231,12 +378,12 @@ describe('getMockReq', () => {
     })
 
     // req.headers has the provided arguments
-    expect(testReq.headers).toBeDefined()
-    expect(testReq.headers).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.headers).length).toBe(3)
-    expect(testReq.headers['HeaderOne']).toBe('one')
-    expect(testReq.headers['HeaderTwo']).toBe('two')
-    expect(testReq.headers['HeaderThree']).toBe('three')
+    expect(req.headers).toBeDefined()
+    expect(req.headers).toBeInstanceOf(Object)
+    expect(Object.keys(req.headers).length).toBe(3)
+    expect(req.headers['HeaderOne']).toBe('one')
+    expect(req.headers['HeaderTwo']).toBe('two')
+    expect(req.headers['HeaderThree']).toBe('three')
   })
 
   test('allows custom properties', () => {
@@ -254,7 +401,7 @@ describe('getMockReq', () => {
       name: 'Bob',
     }
 
-    const testReq = getMockReq<CustomRequest>({
+    const req = getMockReq<CustomRequest>({
       user: mockUser,
       query: {
         id: '123',
@@ -264,16 +411,16 @@ describe('getMockReq', () => {
     })
 
     // req.user has the provided arguments
-    expect(testReq.user).toBeDefined()
-    expect(testReq.user).toBe(mockUser)
+    expect(req.user).toBeDefined()
+    expect(req.user).toBe(mockUser)
 
     // req.query has the provided arguments
-    expect(testReq.query).toBeDefined()
-    expect(testReq.query).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.query).length).toBe(3)
-    expect(testReq.query['id']).toBe('123')
-    expect(testReq.query['limit']).toBe(10)
-    expect(testReq.query['page']).toBe(2)
+    expect(req.query).toBeDefined()
+    expect(req.query).toBeInstanceOf(Object)
+    expect(Object.keys(req.query).length).toBe(3)
+    expect(req.query['id']).toBe('123')
+    expect(req.query['limit']).toBe(10)
+    expect(req.query['page']).toBe(2)
   })
 
   test('issue #6', () => {
@@ -281,7 +428,7 @@ describe('getMockReq', () => {
       Android = 1,
     }
 
-    const testReq = getMockReq({
+    const req = getMockReq({
       query: {
         os: AppOS.Android,
         sellerId: '12345',
@@ -292,17 +439,17 @@ describe('getMockReq', () => {
     })
 
     // req.query has the provided arguments
-    expect(testReq.query).toBeDefined()
-    expect(testReq.query).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.query).length).toBe(2)
-    expect(testReq.query['os']).toBe(AppOS.Android)
-    expect(testReq.query['sellerId']).toBe('12345')
+    expect(req.query).toBeDefined()
+    expect(req.query).toBeInstanceOf(Object)
+    expect(Object.keys(req.query).length).toBe(2)
+    expect(req.query['os']).toBe(AppOS.Android)
+    expect(req.query['sellerId']).toBe('12345')
 
     // req.headers has the provided arguments
-    expect(testReq.headers).toBeDefined()
-    expect(testReq.headers).toBeInstanceOf(Object)
-    expect(Object.keys(testReq.headers).length).toBe(1)
-    expect(testReq.headers['Authorization']).toBe('token validtoken')
+    expect(req.headers).toBeDefined()
+    expect(req.headers).toBeInstanceOf(Object)
+    expect(Object.keys(req.headers).length).toBe(1)
+    expect(req.headers['Authorization']).toBe('token validtoken')
   })
 
   test('issue #27', () => {
@@ -311,17 +458,17 @@ describe('getMockReq', () => {
       customProperty: string
     }
 
-    const testReq = getMockReq<CustomRequest>({
+    const req = getMockReq<CustomRequest>({
       locals: { var: 'hi there' },
       customProperty: 'value',
     })
 
     // req.locals has the provided arguments
-    expect(testReq.locals).toBeDefined()
-    expect(testReq.locals).toEqual({ var: 'hi there' })
+    expect(req.locals).toBeDefined()
+    expect(req.locals).toEqual({ var: 'hi there' })
 
     // req.customProperty has the provided arguments
-    expect(testReq.customProperty).toBeDefined()
-    expect(testReq.customProperty).toEqual('value')
+    expect(req.customProperty).toBeDefined()
+    expect(req.customProperty).toEqual('value')
   })
 })
