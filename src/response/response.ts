@@ -75,6 +75,7 @@ export const getMockRes = <T extends Response>(
     writeContinue: jest.fn(),
     writeHead: jest.fn(),
     writeProcessing: jest.fn(),
+    write: jest.fn(),
     statusCode,
     statusMessage,
     // http - OutgoingMessage
@@ -119,6 +120,7 @@ export const getMockRes = <T extends Response>(
   response.append.mockReturnValue(response)
   // http - ServerResponse - chainable functions
   response.writeHead.mockReturnValue(response)
+  response.write.mockRejectedValue(response)
   // http - OutgoingMessage - chainable functions
   response.setTimeout.mockReturnValue(response)
 
@@ -155,6 +157,7 @@ export const getMockRes = <T extends Response>(
     response.writeContinue.mockClear()
     response.writeHead.mockClear()
     response.writeProcessing.mockClear()
+    response.write.mockClear()
     // http - OutgoingMessage
     response.setTimeout.mockClear()
     response.setHeader.mockClear()

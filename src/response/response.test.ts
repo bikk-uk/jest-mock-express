@@ -5,7 +5,7 @@ import type { Response } from 'express'
 // Tested Module
 import getMockRes from './response'
 
-const DEFAULT_RES_KEY_LENGTH = 53
+const DEFAULT_RES_KEY_LENGTH = 54
 
 describe('getMockRes', () => {
   test('returns expected object', () => {
@@ -50,6 +50,7 @@ describe('getMockRes', () => {
     expect(typeof res.end).toBe('function')
     expect(typeof res.assignSocket).toBe('function')
     expect(typeof res.detachSocket).toBe('function')
+    expect(typeof res.write).toBe('function')
     expect(typeof res.writeContinue).toBe('function')
     expect(typeof res.writeHead).toBe('function')
     expect(typeof res.writeProcessing).toBe('function')
@@ -410,6 +411,7 @@ describe('getMockRes', () => {
     expect(res.writeContinue as jest.Mock).toBeCalledTimes(1)
     expect(res.writeHead as jest.Mock).toBeCalledTimes(1)
     expect(res.writeProcessing as jest.Mock).toBeCalledTimes(1)
+    // expect(res.write as jest.Mock).toBeCalledTimes(1)
     // http - OutgoingMessage
     expect(res.setTimeout as jest.Mock).toBeCalledTimes(1)
     expect(res.setHeader as jest.Mock).toBeCalledTimes(1)
@@ -455,6 +457,7 @@ describe('getMockRes', () => {
     expect(res.end as jest.Mock).not.toBeCalled()
     expect(res.assignSocket as jest.Mock).not.toBeCalled()
     expect(res.detachSocket as jest.Mock).not.toBeCalled()
+    expect(res.write as jest.Mock).not.toBeCalled()
     expect(res.writeContinue as jest.Mock).not.toBeCalled()
     expect(res.writeHead as jest.Mock).not.toBeCalled()
     expect(res.writeProcessing as jest.Mock).not.toBeCalled()
@@ -475,6 +478,7 @@ describe('getMockRes', () => {
 
     // call all of the mock functions
     next()
+
     callAll(res)
 
     // ensure they all report as being called
@@ -510,6 +514,7 @@ describe('getMockRes', () => {
     expect(res.writeContinue as jest.Mock).toBeCalledTimes(1)
     expect(res.writeHead as jest.Mock).toBeCalledTimes(1)
     expect(res.writeProcessing as jest.Mock).toBeCalledTimes(1)
+    // expect(res.write as jest.Mock).toBeCalledTimes(1)
     // http - OutgoingMessage
     expect(res.setTimeout as jest.Mock).toBeCalledTimes(1)
     expect(res.setHeader as jest.Mock).toBeCalledTimes(1)
@@ -558,6 +563,7 @@ describe('getMockRes', () => {
     expect(res.writeContinue as jest.Mock).not.toBeCalled()
     expect(res.writeHead as jest.Mock).not.toBeCalled()
     expect(res.writeProcessing as jest.Mock).not.toBeCalled()
+    expect(res.write as jest.Mock).not.toBeCalled()
     // http - OutgoingMessage
     expect(res.setTimeout as jest.Mock).not.toBeCalled()
     expect(res.setHeader as jest.Mock).not.toBeCalled()
@@ -617,6 +623,8 @@ function callAll(res: Response) {
   res.writeContinue()
   res.writeHead(123)
   res.writeProcessing()
+  // res.write('test')
+
   // http - OutgoingMessage
   res.setTimeout(123)
   res.setHeader('test', 'test')
