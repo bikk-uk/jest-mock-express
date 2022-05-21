@@ -6,14 +6,15 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
-    "test:ci": "jest --coverage --verbose",
+    "test-verbose": "jest --coverage --verbose",
     "test-watch": "jest \"/*.ts\" --watchAll",
     "test-watch-all": "jest --watchAll",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
     "build": "tsc",
     "clean": "rm -rf dist/*",
-    "release": "yarn prepublishOnly && yarn test && yarn lint",
     "prepublishOnly": "yarn && yarn clean && yarn build",
+    "release": "yarn prepublishOnly && yarn lint && yarn test",
+    "ci": "yarn release --verbose",
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect"
   },
