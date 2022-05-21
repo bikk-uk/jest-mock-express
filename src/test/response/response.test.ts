@@ -25,21 +25,21 @@ describe('response - returns the expected object', () => {
     expect(Object.keys(mockRes).length).toBe(4)
   })
 
-  test('it contains the res object', () => {
+  test('the res object is provided', () => {
     const mockRes = getMockRes()
 
     expect(mockRes.res).toBeDefined()
     expect(mockRes.res).toBeInstanceOf(Object)
   })
 
-  test('it contains the next function', () => {
-    const mockRes = getMockRes()
+  test('the mock next function is provided', () => {
+    const { next } = getMockRes()
 
-    expect(mockRes.next).toBeDefined()
-    expect(typeof mockRes.next).toBe('function')
+    expect(next).toBeDefined()
+    expect(typeof next).toBe('function')
   })
 
-  test('the mock next function is provided', () => {
+  test('the mock next function can be called', () => {
     const { next } = getMockRes()
 
     next()
