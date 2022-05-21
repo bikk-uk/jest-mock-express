@@ -1,9 +1,9 @@
 export interface MockResponse {
   headersSent?: boolean
-  charset?: string
-  req?: any
-  app?: any
   locals?: any
+  charset?: string
+  app?: any
+  req?: any
   statusCode?: number
   statusMessage?: string
   upgrading?: boolean
