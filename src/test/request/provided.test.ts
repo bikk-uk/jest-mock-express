@@ -1,32 +1,21 @@
 // Types
-import type { MediaType, Params, Request } from 'express-serve-static-core'
+import type { Request } from 'express-serve-static-core'
+
+// Helpers
+import {
+  providedBoolean,
+  providedFunction,
+  providedMediaTypeArray,
+  providedNumber,
+  providedObject,
+  providedParams,
+  providedString,
+  providedStringArray,
+  providedStringObject,
+} from '../helpers/provided'
 
 // Tested Module
 import getMockReq from '../../request/request'
-
-const providedObject = {
-  one: {
-    two: 'three',
-  },
-  four: ['five'],
-}
-const providedParams: Params = {
-  one: 'two',
-  three: 'four',
-}
-const providedFunction = jest.fn().mockName('Provided Mock Function')
-const providedMediaTypeArray: MediaType[] = [
-  {
-    value: 'value',
-    quality: 1,
-    type: 'type',
-    subtype: 'subtype',
-  },
-]
-const providedNumber = 123
-const providedStringArray = ['One', 'Two', 'Three', 'Four']
-const providedString = 'Provided String'
-const providedBoolean = true
 
 describe('request - Provided (accepts arguments and returns expected values)', () => {
   test('req.params can be provided', () => {
@@ -331,10 +320,10 @@ describe('request - Provided (accepts arguments and returns expected values)', (
   })
 
   test('req.trailers can be provided', () => {
-    const req = getMockReq({ trailers: providedParams })
+    const req = getMockReq({ trailers: providedStringObject })
 
     expect(req.trailers).toBeDefined()
-    expect(req.trailers).toBe(providedParams)
+    expect(req.trailers).toBe(providedStringObject)
   })
 
   test('req.rawTrailers can be provided', () => {
