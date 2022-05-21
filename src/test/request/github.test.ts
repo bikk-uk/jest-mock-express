@@ -16,7 +16,7 @@ describe('request - GitHub Issues', () => {
         sellerId: '12345',
       },
       headers: {
-        Authorization: 'token validtoken',
+        Authorization: 'valid-token',
       },
     })
 
@@ -31,7 +31,7 @@ describe('request - GitHub Issues', () => {
     expect(req.headers).toBeDefined()
     expect(req.headers).toBeInstanceOf(Object)
     expect(Object.keys(req.headers).length).toBe(1)
-    expect(req.headers['Authorization']).toBe('token validtoken')
+    expect(req.headers['Authorization']).toBe('valid-token')
   })
 
   test('issue #27', () => {
