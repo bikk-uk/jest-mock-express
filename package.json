@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
+    "test:ci": "jest --coverage --verbose",
     "test-watch": "jest \"/*.ts\" --watchAll",
     "test-watch-all": "jest --watchAll",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
