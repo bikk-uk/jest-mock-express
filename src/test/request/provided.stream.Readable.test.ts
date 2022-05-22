@@ -4,7 +4,7 @@ import { providedBoolean, providedFunction, providedNumber } from '../helpers/pr
 // Tested Module
 import getMockReq from '../../request/request'
 
-describe('request - Provided from "stream - Readable" (accepts arguments and returns expected values)', () => {
+describe('request - Provided from "stream.Readable" (accepts arguments and returns expected values)', () => {
   test('req.readable can be provided', () => {
     const req = getMockReq({ readable: providedBoolean })
 
