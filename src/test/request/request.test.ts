@@ -1,7 +1,7 @@
 // Tested Module
 import getMockReq from '../../request/request'
 
-const DEFAULT_REQ_KEY_LENGTH = 73
+const DEFAULT_REQ_KEY_LENGTH = 72
 
 describe('request - General', () => {
   test('it returns expected object', () => {

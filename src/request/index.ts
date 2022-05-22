@@ -10,7 +10,6 @@ interface StreamReadable {
   readableLength?: Readable['readableLength']
   readableObjectMode?: Readable['readableObjectMode']
   destroyed?: Readable['destroyed']
-  constructor?: Readable['constructor']
   _read?: Readable['_read']
   read?: Readable['read']
   setEncoding?: Readable['setEncoding']

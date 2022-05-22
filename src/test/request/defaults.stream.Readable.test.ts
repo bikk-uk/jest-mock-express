@@ -37,12 +37,12 @@ describe('request - Defaults from "stream - Readable" (accepts no arguments and 
     expect(req.destroyed).toBe(false)
   })
 
-  test('req.constructor is a mocked function', () => {
+  test('req.constructor is a function', () => {
     const req = getMockReq()
 
+    // the constructor is not mocked
     expect(req.constructor).toBeDefined()
     expect(typeof req.constructor).toBe('function')
-    // can't check the constructor is mocked
   })
 
   test('req._read is a mocked function', () => {
