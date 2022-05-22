@@ -1,10 +1,28 @@
 // Types
 import type { IncomingMessage } from 'http'
+import type { EventEmitter } from 'events'
 import type { Readable } from 'stream'
 import type { Request } from 'express-serve-static-core'
 
+interface EventEventEmitter {
+  addListener?: EventEmitter['addListener']
+  on?: EventEmitter['on']
+  once?: EventEmitter['once']
+  removeListener?: EventEmitter['removeListener']
+  off?: EventEmitter['off']
+  removeAllListeners?: EventEmitter['removeAllListeners']
+  setMaxListeners?: EventEmitter['setMaxListeners']
+  getMaxListeners?: EventEmitter['getMaxListeners']
+  listeners?: EventEmitter['listeners']
+  rawListeners?: EventEmitter['rawListeners']
+  emit?: EventEmitter['emit']
+  listenerCount?: EventEmitter['listenerCount']
+  prependListener?: EventEmitter['prependListener']
+  prependOnceListener?: EventEmitter['prependOnceListener']
+  eventNames?: EventEmitter['eventNames']
+}
 
-interface StreamReadable {
+interface StreamReadable extends EventEventEmitter {
   readable?: Readable['readable']
   readableHighWaterMark?: Readable['readableHighWaterMark']
   readableLength?: Readable['readableLength']

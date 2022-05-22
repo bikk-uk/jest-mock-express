@@ -87,6 +87,24 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     prependOnceListener = jest.fn().mockName('prependOnceListener mock default'),
     removeListener = jest.fn().mockName('removeListener mock default'),
     // destroy - is handled/overridden as part of http.IncomingMessage
+
+    // event.EventEmitter
+    // addListener - is handled/overridden as part of stream.Readable
+    // on - is handled/overridden as part of stream.Readable
+    // once - is handled/overridden as part of stream.Readable
+    // removeListener - is handled/overridden as part of stream.Readable
+    off = jest.fn().mockName('off mock default'),
+    removeAllListeners = jest.fn().mockName('removeAllListeners mock default'),
+    setMaxListeners = jest.fn().mockName('setMaxListeners mock default'),
+    getMaxListeners = jest.fn().mockName('getMaxListeners mock default'),
+    listeners = jest.fn().mockName('listeners mock default'),
+    rawListeners = jest.fn().mockName('rawListeners mock default'),
+    // emit - is handled/overridden as part of stream.Readable
+    listenerCount = jest.fn().mockName('listenerCount mock default'),
+    // prependListener - is handled/overridden as part of stream.Readable
+    // prependOnceListener - is handled/overridden as part of stream.Readable
+    eventNames = jest.fn().mockName('eventNames mock default'),
+
     // custom values
     ...extraProvidedValues
   } = values
@@ -171,6 +189,22 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     removeListener,
     // destroy - is handled/overridden as part of http.IncomingMessage
 
+    // event.EventEmitter
+    // addListener - is handled/overridden as part of stream.Readable
+    // on - is handled/overridden as part of stream.Readable
+    // once - is handled/overridden as part of stream.Readable
+    // removeListener - is handled/overridden as part of stream.Readable
+    off,
+    removeAllListeners,
+    setMaxListeners,
+    getMaxListeners,
+    listeners,
+    rawListeners,
+    // emit - is handled/overridden as part of stream.Readable
+    listenerCount,
+    // prependListener - is handled/overridden as part of stream.Readable
+    // prependOnceListener - is handled/overridden as part of stream.Readable
+    eventNames,
 
     // custom values
     ...extraProvidedValues,
