@@ -1,7 +1,7 @@
 // Tested Module
 import getMockReq from '../../request/request'
 
-describe('request - Defaults from "stream - Readable" (accepts no arguments and return default values)', () => {
+describe('request - Defaults from "stream.Readable" (accepts no arguments and return default values)', () => {
   test('req.readable is a boolean', () => {
     const req = getMockReq()
 
