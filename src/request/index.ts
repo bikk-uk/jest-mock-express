@@ -1,9 +1,38 @@
 // Types
 import type { IncomingMessage } from 'http'
+import type { Readable } from 'stream'
 import type { Request } from 'express-serve-static-core'
 
 
-interface HttpIncomingMessage {
+interface StreamReadable {
+  readable?: Readable['readable']
+  readableHighWaterMark?: Readable['readableHighWaterMark']
+  readableLength?: Readable['readableLength']
+  readableObjectMode?: Readable['readableObjectMode']
+  destroyed?: Readable['destroyed']
+  constructor?: Readable['constructor']
+  _read?: Readable['_read']
+  read?: Readable['read']
+  setEncoding?: Readable['setEncoding']
+  pause?: Readable['pause']
+  resume?: Readable['resume']
+  isPaused?: Readable['isPaused']
+  unpipe?: Readable['unpipe']
+  unshift?: Readable['unshift']
+  wrap?: Readable['wrap']
+  push?: Readable['push']
+  _destroy?: Readable['_destroy']
+  addListener?: Readable['addListener']
+  emit?: Readable['emit']
+  on?: Readable['on']
+  once?: Readable['once']
+  prependListener?: Readable['prependListener']
+  prependOnceListener?: Readable['prependOnceListener']
+  removeListener?: Readable['removeListener']
+  destroy?: Readable['destroy']
+}
+
+interface HttpIncomingMessage extends StreamReadable {
   aborted?: IncomingMessage['aborted']
   httpVersion?: IncomingMessage['httpVersion']
   httpVersionMajor?: IncomingMessage['httpVersionMajor']

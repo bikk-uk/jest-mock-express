@@ -9,6 +9,7 @@ import type { MockRequest } from './index'
  */
 export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
   const {
+    // express - Request
     params = {},
     query = {},
     body = {},
@@ -43,6 +44,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     app = {},
     res = jest.fn().mockName('res mock default'),
     next = jest.fn().mockName('next mock default'),
+    // http - IncomingMessage
     aborted = false,
     httpVersion = '',
     httpVersionMajor = 0,
@@ -58,10 +60,38 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusCode = 0,
     statusMessage = '',
     destroy = jest.fn().mockName('destroy mock default'),
+    // stream - Readable
+    readable = false,
+    readableHighWaterMark = 0,
+    readableLength = 0,
+    readableObjectMode = false,
+    destroyed = false,
+    constructor = jest.fn().mockName('constructor mock default'),
+    _read = jest.fn().mockName('_read mock default'),
+    read = jest.fn().mockName('read mock default'),
+    setEncoding = jest.fn().mockName('setEncoding mock default'),
+    pause = jest.fn().mockName('pause mock default'),
+    resume = jest.fn().mockName('resume mock default'),
+    isPaused = jest.fn().mockName('isPaused mock default'),
+    unpipe = jest.fn().mockName('unpipe mock default'),
+    unshift = jest.fn().mockName('unshift mock default'),
+    wrap = jest.fn().mockName('wrap mock default'),
+    push = jest.fn().mockName('push mock default'),
+    _destroy = jest.fn().mockName('_destroy mock default'),
+    addListener = jest.fn().mockName('addListener mock default'),
+    emit = jest.fn().mockName('emit mock default'),
+    on = jest.fn().mockName('on mock default'),
+    once = jest.fn().mockName('once mock default'),
+    prependListener = jest.fn().mockName('prependListener mock default'),
+    prependOnceListener = jest.fn().mockName('prependOnceListener mock default'),
+    removeListener = jest.fn().mockName('removeListener mock default'),
+    // destroy - is handled/overridden as part of http - IncomingMessage
+    // custom values
     ...extraProvidedValues
   } = values
 
   return {
+    // express - Request
     params,
     query,
     body,
@@ -96,7 +126,6 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     app,
     res,
     next,
-
     // http - IncomingMessage
     aborted,
     httpVersion,
@@ -113,6 +142,32 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusCode,
     statusMessage,
     destroy,
+    // stream - Readable
+    readable,
+    readableHighWaterMark,
+    readableLength,
+    readableObjectMode,
+    destroyed,
+    constructor,
+    _read,
+    read,
+    setEncoding,
+    pause,
+    resume,
+    isPaused,
+    unpipe,
+    unshift,
+    wrap,
+    push,
+    _destroy,
+    addListener,
+    emit,
+    on,
+    once,
+    prependListener,
+    prependOnceListener,
+    removeListener,
+    // destroy - is handled/overridden as part of http - IncomingMessage
 
     // custom values
     ...extraProvidedValues,
