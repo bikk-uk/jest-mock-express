@@ -236,17 +236,17 @@ describe('request - Provided (accepts arguments and returns expected values)', (
   })
 
   test('req.app can be provided', () => {
-    const req = getMockReq({ app: providedObject })
+    const req = getMockReq({ app: providedObject as unknown as Request['app'] })
 
     expect(req.app).toBeDefined()
     expect(req.app).toBe(providedObject)
   })
 
   test('req.res can be provided', () => {
-    const req = getMockReq({ res: providedFunction })
+    const req = getMockReq({ res: providedObject as unknown as Request['res'] })
 
     expect(req.res).toBeDefined()
-    expect(req.res).toBe(providedFunction)
+    expect(req.res).toBe(providedObject)
   })
 
   test('req.next can be provided', () => {
@@ -292,21 +292,21 @@ describe('request - Provided (accepts arguments and returns expected values)', (
   })
 
   test('req.connection can be provided', () => {
-    const req = getMockReq({ connection: providedObject })
+    const req = getMockReq({ connection: providedObject as unknown as Request['connection'] })
 
     expect(req.connection).toBeDefined()
     expect(req.connection).toBe(providedObject)
   })
 
   test('req.socket can be provided', () => {
-    const req = getMockReq({ socket: providedObject })
+    const req = getMockReq({ socket: providedObject as unknown as Request['socket'] })
 
     expect(req.socket).toBeDefined()
     expect(req.socket).toBe(providedObject)
   })
 
   test('req.headers can be provided', () => {
-    const req = getMockReq({ headers: providedObject })
+    const req = getMockReq({ headers: providedObject as unknown as Request['headers'] })
 
     expect(req.headers).toBeDefined()
     expect(req.headers).toBe(providedObject)

@@ -1,5 +1,5 @@
 // Types
-import type { MediaType, Params } from 'express-serve-static-core'
+import type { MediaType, Request } from 'express-serve-static-core'
 
 export const providedNumber = 123
 
@@ -23,7 +23,7 @@ export const providedStringObject: { [key: string]: string | undefined } = {
   three: 'four',
 }
 
-export const providedParams: Params = {
+export const providedParams: Request['params'] = {
   one: 'two',
   three: 'four',
 }
