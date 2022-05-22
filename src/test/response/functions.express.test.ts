@@ -1,7 +1,7 @@
 // Tested Module
 import getMockRes from '../../response/response'
 
-describe('response - Functions from "express - Response"', () => {
+describe('response - Functions from "express.Response"', () => {
   test('res.status is a mocked function', () => {
     const { res } = getMockRes()
 

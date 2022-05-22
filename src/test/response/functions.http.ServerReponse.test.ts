@@ -4,7 +4,7 @@ import { Socket } from 'net'
 // Tested Module
 import getMockRes from '../../response/response'
 
-describe('response - Functions from "http - ServerResponse"', () => {
+describe('response - Functions from "http.ServerResponse"', () => {
   test('res.end is a mocked function', () => {
     const { res } = getMockRes()
 

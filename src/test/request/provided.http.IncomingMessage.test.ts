@@ -15,7 +15,7 @@ import {
 // Tested Module
 import getMockReq from '../../request/request'
 
-describe('request - Provided from "http - IncomingMessage" (accepts arguments and returns expected values)', () => {
+describe('request - Provided from "http.IncomingMessage" (accepts arguments and returns expected values)', () => {
   test('req.aborted can be provided', () => {
     const req = getMockReq({ aborted: providedBoolean })
 

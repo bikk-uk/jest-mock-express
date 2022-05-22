@@ -71,7 +71,8 @@ describe('response - the mock functions can be cleared', () => {
     callAllFunctions(res)
 
     // ensure they all report as being called
-    // express - Response
+
+    // express.Response
     expect(next as jest.Mock).toBeCalledTimes(1)
     expect(res.status as jest.Mock).toBeCalledTimes(1)
     expect(res.sendStatus as jest.Mock).toBeCalledTimes(1)
@@ -96,14 +97,16 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.render as jest.Mock).toBeCalledTimes(1)
     expect(res.vary as jest.Mock).toBeCalledTimes(1)
     expect(res.append as jest.Mock).toBeCalledTimes(1)
-    // http - ServerResponse
+
+    // http. ServerResponse
     expect(res.end as jest.Mock).toBeCalledTimes(1)
     expect(res.assignSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.detachSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.writeContinue as jest.Mock).toBeCalledTimes(1)
     expect(res.writeHead as jest.Mock).toBeCalledTimes(1)
     expect(res.writeProcessing as jest.Mock).toBeCalledTimes(1)
-    // http - OutgoingMessage
+
+    // http.OutgoingMessage
     expect(res.setTimeout as jest.Mock).toBeCalledTimes(1)
     expect(res.setHeader as jest.Mock).toBeCalledTimes(1)
     expect(res.getHeader as jest.Mock).toBeCalledTimes(1)
@@ -118,7 +121,8 @@ describe('response - the mock functions can be cleared', () => {
     mockClear()
 
     // ensure they all have been cleared
-    // express - Response
+
+    // express.Response
     expect(next as jest.Mock).not.toBeCalled()
     expect(next as jest.Mock).not.toBeCalled()
     expect(res.status as jest.Mock).not.toBeCalled()
@@ -144,14 +148,16 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.render as jest.Mock).not.toBeCalled()
     expect(res.vary as jest.Mock).not.toBeCalled()
     expect(res.append as jest.Mock).not.toBeCalled()
-    // http - ServerResponse
+
+    // http.ServerResponse
     expect(res.end as jest.Mock).not.toBeCalled()
     expect(res.assignSocket as jest.Mock).not.toBeCalled()
     expect(res.detachSocket as jest.Mock).not.toBeCalled()
     expect(res.writeContinue as jest.Mock).not.toBeCalled()
     expect(res.writeHead as jest.Mock).not.toBeCalled()
     expect(res.writeProcessing as jest.Mock).not.toBeCalled()
-    // http - OutgoingMessage
+
+    // http.OutgoingMessage
     expect(res.setTimeout as jest.Mock).not.toBeCalled()
     expect(res.setHeader as jest.Mock).not.toBeCalled()
     expect(res.getHeader as jest.Mock).not.toBeCalled()
@@ -171,7 +177,8 @@ describe('response - the mock functions can be cleared', () => {
     callAllFunctions(res)
 
     // ensure they all report as being called
-    // express - Response
+
+    // express.Response
     expect(next as jest.Mock).toBeCalledTimes(1)
     expect(res.status as jest.Mock).toBeCalledTimes(1)
     expect(res.sendStatus as jest.Mock).toBeCalledTimes(1)
@@ -196,14 +203,16 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.render as jest.Mock).toBeCalledTimes(1)
     expect(res.vary as jest.Mock).toBeCalledTimes(1)
     expect(res.append as jest.Mock).toBeCalledTimes(1)
-    // http - ServerResponse
+
+    // http.ServerResponse
     expect(res.end as jest.Mock).toBeCalledTimes(1)
     expect(res.assignSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.detachSocket as jest.Mock).toBeCalledTimes(1)
     expect(res.writeContinue as jest.Mock).toBeCalledTimes(1)
     expect(res.writeHead as jest.Mock).toBeCalledTimes(1)
     expect(res.writeProcessing as jest.Mock).toBeCalledTimes(1)
-    // http - OutgoingMessage
+
+    // http.OutgoingMessage
     expect(res.setTimeout as jest.Mock).toBeCalledTimes(1)
     expect(res.setHeader as jest.Mock).toBeCalledTimes(1)
     expect(res.getHeader as jest.Mock).toBeCalledTimes(1)
@@ -218,7 +227,8 @@ describe('response - the mock functions can be cleared', () => {
     clearMockRes()
 
     // ensure they all have been cleared
-    // express - Response
+
+    // express.Response
     expect(next as jest.Mock).not.toBeCalled()
     expect(next as jest.Mock).not.toBeCalled()
     expect(res.status as jest.Mock).not.toBeCalled()
@@ -244,14 +254,16 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.render as jest.Mock).not.toBeCalled()
     expect(res.vary as jest.Mock).not.toBeCalled()
     expect(res.append as jest.Mock).not.toBeCalled()
-    // http - ServerResponse
+
+    // http.ServerResponse
     expect(res.end as jest.Mock).not.toBeCalled()
     expect(res.assignSocket as jest.Mock).not.toBeCalled()
     expect(res.detachSocket as jest.Mock).not.toBeCalled()
     expect(res.writeContinue as jest.Mock).not.toBeCalled()
     expect(res.writeHead as jest.Mock).not.toBeCalled()
     expect(res.writeProcessing as jest.Mock).not.toBeCalled()
-    // http - OutgoingMessage
+
+    // http.OutgoingMessage
     expect(res.setTimeout as jest.Mock).not.toBeCalled()
     expect(res.setHeader as jest.Mock).not.toBeCalled()
     expect(res.getHeader as jest.Mock).not.toBeCalled()

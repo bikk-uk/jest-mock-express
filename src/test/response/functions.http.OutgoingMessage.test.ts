@@ -1,7 +1,7 @@
 // Tested Module
 import getMockRes from '../../response/response'
 
-describe('request - Functions from "http - OutgoingMessage"', () => {
+describe('request - Functions from "http.OutgoingMessage"', () => {
   test('res.setTimeout is a mocked function', () => {
     const { res } = getMockRes()
 

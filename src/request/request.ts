@@ -9,7 +9,7 @@ import type { MockRequest } from './index'
  */
 export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
   const {
-    // express - Request
+    // express.Request
     params = {},
     query = {},
     body = {},
@@ -44,7 +44,8 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     app = {},
     res = jest.fn().mockName('res mock default'),
     next = jest.fn().mockName('next mock default'),
-    // http - IncomingMessage
+
+    // http.IncomingMessage
     aborted = false,
     httpVersion = '',
     httpVersionMajor = 0,
@@ -60,7 +61,8 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusCode = 0,
     statusMessage = '',
     destroy = jest.fn().mockName('destroy mock default'),
-    // stream - Readable
+
+    // stream.Readable
     readable = false,
     readableHighWaterMark = 0,
     readableLength = 0,
@@ -84,13 +86,13 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     prependListener = jest.fn().mockName('prependListener mock default'),
     prependOnceListener = jest.fn().mockName('prependOnceListener mock default'),
     removeListener = jest.fn().mockName('removeListener mock default'),
-    // destroy - is handled/overridden as part of http - IncomingMessage
+    // destroy - is handled/overridden as part of http.IncomingMessage
     // custom values
     ...extraProvidedValues
   } = values
 
   return {
-    // express - Request
+    // express.Request
     params,
     query,
     body,
@@ -125,7 +127,8 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     app,
     res,
     next,
-    // http - IncomingMessage
+
+    // http.IncomingMessage
     aborted,
     httpVersion,
     httpVersionMajor,
@@ -141,7 +144,8 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusCode,
     statusMessage,
     destroy,
-    // stream - Readable
+
+    // stream.Readable
     readable,
     readableHighWaterMark,
     readableLength,
@@ -165,7 +169,8 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     prependListener,
     prependOnceListener,
     removeListener,
-    // destroy - is handled/overridden as part of http - IncomingMessage
+    // destroy - is handled/overridden as part of http.IncomingMessage
+
 
     // custom values
     ...extraProvidedValues,

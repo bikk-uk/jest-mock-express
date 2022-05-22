@@ -1,7 +1,7 @@
 // Tested Module
 import getMockReq from '../../request/request'
 
-describe('request - Defaults from "express - Response" (accepts no arguments and return default values)', () => {
+describe('request - Defaults from "express.Response" (accepts no arguments and return default values)', () => {
   test('req.params is an empty object', () => {
     const req = getMockReq()
 
