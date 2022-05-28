@@ -146,7 +146,6 @@ export const getMockRes = <T extends Response>(
 
     // stream.Writable
     // TODO: Implement this
-    // WHO DIS?
     end,
 
     // custom values
