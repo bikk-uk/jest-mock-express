@@ -98,7 +98,7 @@ describe('response - Defaults for "http.OutgoingMessage" (accepts no arguments a
     expect(res.setHeader('test', 'test two')).toBeUndefined()
   })
 
-  test('res.getHeader is a mocked function and is not chainable', () => {
+  test('res.getHeader is a mocked function', () => {
     const { res } = getMockRes()
 
     expect(res.getHeader).toBeDefined()
@@ -106,7 +106,7 @@ describe('response - Defaults for "http.OutgoingMessage" (accepts no arguments a
     expect((res.getHeader as jest.Mock).getMockName()).toBe('getHeader mock default')
   })
 
-  test('res.getHeader is a mocked function and is not chainable', () => {
+  test('res.getHeader is not chainable', () => {
     const { res } = getMockRes()
 
     // it does not return itself (is not chainable)

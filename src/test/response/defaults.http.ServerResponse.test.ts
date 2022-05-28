@@ -4,7 +4,7 @@ import { Socket } from 'net'
 // Tested Module
 import getMockRes from '../../response/response'
 
-describe('response for "http.ServerResponse" - Defaults (accepts no arguments and return default values)', () => {
+describe('response - Defaults for "http.ServerResponse" (accepts no arguments and return default values)', () => {
   test('res.statusCode is a number', () => {
     const { res } = getMockRes()
 

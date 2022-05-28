@@ -15,7 +15,7 @@ import {
 // Tested Module
 import getMockReq from '../../request/request'
 
-describe('request - Provided from "express - Request" (accepts arguments and returns expected values)', () => {
+describe('request - Provided for "express - Request" (accepts arguments and returns expected values)', () => {
   test('req.params can be provided', () => {
     const req = getMockReq({ params: providedParams })
 
