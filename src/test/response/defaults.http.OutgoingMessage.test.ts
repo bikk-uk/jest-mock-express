@@ -1,59 +1,7 @@
 // Tested Module
 import getMockRes from '../../response/response'
 
-describe('response - Defaults (accepts no arguments and return default values)', () => {
-  test('res.headersSent is a boolean', () => {
-    const { res } = getMockRes()
-
-    expect(res.headersSent).toBeDefined()
-    expect(res.headersSent).toBe(false)
-  })
-
-  test('res.locals is an empty object', () => {
-    const { res } = getMockRes()
-
-    expect(res.locals).toBeDefined()
-    expect(res.locals).toBeInstanceOf(Object)
-    expect(Object.keys(res.locals).length).toBe(0)
-  })
-
-  test('res.charset is an empty string', () => {
-    const { res } = getMockRes()
-
-    expect(res.charset).toBeDefined()
-    expect(res.charset).toBe('')
-  })
-
-  test('res.app is an empty object', () => {
-    const { res } = getMockRes()
-
-    expect(res.app).toBeDefined()
-    expect(res.app).toBeInstanceOf(Object)
-    expect(Object.keys(res.app).length).toBe(0)
-  })
-
-  test('res.req is an empty object', () => {
-    const { res } = getMockRes()
-
-    expect(res.req).toBeDefined()
-    expect(res.req).toBeInstanceOf(Object)
-    expect(res.req).toEqual({})
-  })
-
-  test('res.statusCode is a number', () => {
-    const { res } = getMockRes()
-
-    expect(res.statusCode).toBeDefined()
-    expect(res.statusCode).toEqual(0)
-  })
-
-  test('res.statusMessage is an empty string', () => {
-    const { res } = getMockRes()
-
-    expect(res.statusMessage).toBeDefined()
-    expect(res.statusMessage).toEqual('')
-  })
-
+describe('response - Defaults for "http.OutgoingMessage" (accepts no arguments and return default values)', () => {
   test('res.upgrading is a boolean', () => {
     const { res } = getMockRes()
 
