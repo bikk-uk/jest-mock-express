@@ -20,7 +20,9 @@ export const providedObject = {
 }
 
 export const providedApp: Partial<Response['app']> = {
-  path: () => 'value',
+  settings: {
+    one: 'two',
+  },
 }
 
 export const providedReq: Partial<Response['req']> = {
