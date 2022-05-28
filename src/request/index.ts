@@ -102,6 +102,7 @@ export interface MockRequest extends HttpIncomingMessage {
   app?: Request['app']
   res?: Request['res']
   next?: Request['next']
+
   // allow custom properties to be provided
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any

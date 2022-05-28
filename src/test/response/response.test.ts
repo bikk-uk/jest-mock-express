@@ -4,7 +4,7 @@ import { callAllFunctions } from '../helpers/response'
 // Tested Module
 import getMockRes from '../../response/response'
 
-export const DEFAULT_RES_KEY_LENGTH = 53
+export const DEFAULT_RES_KEY_LENGTH = 52
 
 describe('response - General', () => {
   test('the mock res is provided and contains the expected functions', () => {

@@ -1,5 +1,5 @@
 // Helpers
-import { providedBoolean, providedObject, providedString } from '../helpers/provided'
+import { providedApp, providedBoolean, providedObject, providedReq, providedString } from '../helpers/provided'
 
 // Tested Module
 import getMockRes from '../../response/response'
@@ -27,16 +27,16 @@ describe('response - Provided for "express.Express" (accepts arguments and retur
   })
 
   test('res.app can be provided', () => {
-    const { res } = getMockRes({ app: providedObject })
+    const { res } = getMockRes({ app: providedApp })
 
     expect(res.app).toBeDefined()
-    expect(res.app).toBe(providedObject)
+    expect(res.app).toBe(providedApp)
   })
 
   test('res.req can be provided', () => {
-    const { res } = getMockRes({ req: providedObject })
+    const { res } = getMockRes({ req: providedReq })
 
     expect(res.req).toBeDefined()
-    expect(res.req).toBe(providedObject)
+    expect(res.req).toBe(providedReq)
   })
 })

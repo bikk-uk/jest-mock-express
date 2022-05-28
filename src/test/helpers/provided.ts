@@ -1,4 +1,5 @@
 // Types
+import type { Response } from 'express'
 import type { MediaType, Request } from 'express-serve-static-core'
 
 export const providedNumber = 123
@@ -16,6 +17,18 @@ export const providedObject = {
     two: 'three',
   },
   four: ['five'],
+}
+
+export const providedApp: Partial<Response['app']> = {
+  path: () => 'value',
+}
+
+export const providedReq: Partial<Response['req']> = {
+  path: 'value',
+}
+
+export const providedSocket: Partial<Response['socket']> = {
+  connecting: true,
 }
 
 export const providedStringObject: { [key: string]: string | undefined } = {

@@ -1,17 +1,10 @@
 // Helpers
-import { providedBoolean, providedObject } from '../helpers/provided'
+import { providedBoolean, providedSocket } from '../helpers/provided'
 
 // Tested Module
 import getMockRes from '../../response/response'
 
 describe('response - Provided for "http.OutgoingMessage" (accepts arguments and returns expected values)', () => {
-  test('res.upgrading can be provided', () => {
-    const { res } = getMockRes({ upgrading: providedBoolean })
-
-    expect(res.upgrading).toBeDefined()
-    expect(res.upgrading).toBe(providedBoolean)
-  })
-
   test('res.chunkedEncoding can be provided', () => {
     const { res } = getMockRes({ chunkedEncoding: providedBoolean })
 
@@ -48,16 +41,16 @@ describe('response - Provided for "http.OutgoingMessage" (accepts arguments and 
   })
 
   test('res.connection can be provided', () => {
-    const { res } = getMockRes({ connection: providedObject })
+    const { res } = getMockRes({ connection: providedSocket })
 
     expect(res.connection).toBeDefined()
-    expect(res.connection).toBe(providedObject)
+    expect(res.connection).toBe(providedSocket)
   })
 
   test('res.socket can be provided', () => {
-    const { res } = getMockRes({ socket: providedObject })
+    const { res } = getMockRes({ socket: providedSocket })
 
     expect(res.socket).toBeDefined()
-    expect(res.socket).toBe(providedObject)
+    expect(res.socket).toBe(providedSocket)
   })
 })

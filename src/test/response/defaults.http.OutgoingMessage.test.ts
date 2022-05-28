@@ -2,13 +2,6 @@
 import getMockRes from '../../response/response'
 
 describe('response - Defaults for "http.OutgoingMessage" (accepts no arguments and return default values)', () => {
-  test('res.upgrading is a boolean', () => {
-    const { res } = getMockRes()
-
-    expect(res.upgrading).toBeDefined()
-    expect(res.upgrading).toEqual(false)
-  })
-
   test('res.chunkedEncoding is a boolean', () => {
     const { res } = getMockRes()
 
