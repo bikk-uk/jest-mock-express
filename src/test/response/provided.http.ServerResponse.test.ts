@@ -1,5 +1,5 @@
 // Helpers
-import { providedNumber, providedString } from '../helpers/provided'
+import { providedFunction, providedNumber, providedString } from '../helpers/provided'
 
 // Tested Module
 import getMockRes from '../../response/response'
@@ -17,5 +17,40 @@ describe('response - Provided for "http.ServerResponse" (accepts arguments and r
 
     expect(res.statusMessage).toBeDefined()
     expect(res.statusMessage).toBe(providedString)
+  })
+
+  test('res.assignSocket can be provided', () => {
+    const { res } = getMockRes({ assignSocket: providedFunction })
+
+    expect(res.assignSocket).toBeDefined()
+    expect(res.assignSocket).toBe(providedFunction)
+  })
+
+  test('res.detachSocket can be provided', () => {
+    const { res } = getMockRes({ detachSocket: providedFunction })
+
+    expect(res.detachSocket).toBeDefined()
+    expect(res.detachSocket).toBe(providedFunction)
+  })
+
+  test('res.writeContinue can be provided', () => {
+    const { res } = getMockRes({ writeContinue: providedFunction })
+
+    expect(res.writeContinue).toBeDefined()
+    expect(res.writeContinue).toBe(providedFunction)
+  })
+
+  test('res.writeHead can be provided', () => {
+    const { res } = getMockRes({ writeHead: providedFunction })
+
+    expect(res.writeHead).toBeDefined()
+    expect(res.writeHead).toBe(providedFunction)
+  })
+
+  test('res.writeProcessing can be provided', () => {
+    const { res } = getMockRes({ writeProcessing: providedFunction })
+
+    expect(res.writeProcessing).toBeDefined()
+    expect(res.writeProcessing).toBe(providedFunction)
   })
 })
