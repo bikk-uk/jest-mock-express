@@ -208,7 +208,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
 
     // custom values
     ...extraProvidedValues,
-  } as T
+  } as unknown as T
 }
 
 export default getMockReq
