@@ -58,10 +58,27 @@ export function callAllFunctions(res: Response) {
   res.uncork()
   res.destroy()
   res.addListener('test', jest.fn())
-  res.emit('finish')
-  res.on('close', jest.fn())
-  res.once('pipe', jest.fn())
-  res.prependListener('drain', jest.fn())
-  res.prependOnceListener('unpipe', jest.fn())
-  res.removeListener('error', jest.fn())
+  res.emit('test')
+  res.on('test', jest.fn())
+  res.once('test', jest.fn())
+  res.prependListener('test', jest.fn())
+  res.prependOnceListener('test', jest.fn())
+  res.removeListener('test', jest.fn())
+
+  /* event.EventEmitter */
+  // addListener - is handled/overridden as part of stream.Writable
+  // on - is handled/overridden as part of stream.Writable
+  // once - is handled/overridden as part of stream.Writable
+  // removeListener - is handled/overridden as part of stream.Writable
+  res.off('test', jest.fn())
+  res.removeAllListeners()
+  res.setMaxListeners(2)
+  res.getMaxListeners()
+  res.listeners('test')
+  res.rawListeners('test')
+  // emit - is handled/overridden as part of stream.Writable
+  res.listenerCount('test')
+  // prependListener - is handled/overridden as part of stream.Writable
+  // prependOnceListener - is handled/overridden as part of stream.Writable
+  res.eventNames()
 }

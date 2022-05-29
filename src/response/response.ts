@@ -107,6 +107,23 @@ export const getMockRes = <T extends Response>(
     prependOnceListener = jest.fn().mockName('prependOnceListener mock default'),
     removeListener = jest.fn().mockName('removeListener mock default'),
 
+    /* event.EventEmitter */
+    // addListener - is handled/overridden as part of stream.Writable
+    // on - is handled/overridden as part of stream.Writable
+    // once - is handled/overridden as part of stream.Writable
+    // removeListener - is handled/overridden as part of stream.Writable
+    off = jest.fn().mockName('off mock default'),
+    removeAllListeners = jest.fn().mockName('removeAllListeners mock default'),
+    setMaxListeners = jest.fn().mockName('setMaxListeners mock default'),
+    getMaxListeners = jest.fn().mockName('getMaxListeners mock default'),
+    listeners = jest.fn().mockName('listeners mock default'),
+    rawListeners = jest.fn().mockName('rawListeners mock default'),
+    // emit - is handled/overridden as part of stream.Writable
+    listenerCount = jest.fn().mockName('listenerCount mock default'),
+    // prependListener - is handled/overridden as part of stream.Writable
+    // prependOnceListener - is handled/overridden as part of stream.Writable
+    eventNames = jest.fn().mockName('eventNames mock default'),
+
     // custom values
     ...extraProvidedValues
   } = values
@@ -195,6 +212,23 @@ export const getMockRes = <T extends Response>(
     prependOnceListener,
     removeListener,
 
+    /* event.EventEmitter */
+    // addListener - is handled/overridden as part of stream.Writable
+    // on - is handled/overridden as part of stream.Writable
+    // once - is handled/overridden as part of stream.Writable
+    // removeListener - is handled/overridden as part of stream.Writable
+    off,
+    removeAllListeners,
+    setMaxListeners,
+    getMaxListeners,
+    listeners,
+    rawListeners,
+    // emit - is handled/overridden as part of stream.Writable
+    listenerCount,
+    // prependListener - is handled/overridden as part of stream.Writable
+    // prependOnceListener - is handled/overridden as part of stream.Writable
+    eventNames,
+
     // custom values
     ...extraProvidedValues,
   }
@@ -232,6 +266,17 @@ export const getMockRes = <T extends Response>(
   response.prependListener.mockReturnValue(response)
   response.prependOnceListener.mockReturnValue(response)
   response.removeListener.mockReturnValue(response)
+
+  /* event.EventEmitter - chainable functions */
+  // addListener - is handled/overridden as part of stream.Writable
+  // on - is handled/overridden as part of stream.Writable
+  // once - is handled/overridden as part of stream.Writable
+  // removeListener - is handled/overridden as part of stream.Writable
+  response.off.mockReturnValue(response)
+  response.removeAllListeners.mockReturnValue(response)
+  response.setMaxListeners.mockReturnValue(response)
+  // prependListener - is handled/overridden as part of stream.Writable
+  // prependOnceListener - is handled/overridden as part of stream.Writable
 
   const clearAllMocks = (): void => {
     next.mockClear()
@@ -296,6 +341,23 @@ export const getMockRes = <T extends Response>(
     response.prependListener.mockClear()
     response.prependOnceListener.mockClear()
     response.removeListener.mockClear()
+
+    /* event.EventEmitter */
+    // addListener - is handled/overridden as part of stream.Writable
+    // on - is handled/overridden as part of stream.Writable
+    // once - is handled/overridden as part of stream.Writable
+    // removeListener - is handled/overridden as part of stream.Writable
+    response.off.mockClear()
+    response.removeAllListeners.mockClear()
+    response.setMaxListeners.mockClear()
+    response.getMaxListeners.mockClear()
+    response.listeners.mockClear()
+    response.rawListeners.mockClear()
+    // emit - is handled/overridden as part of stream.Writable
+    response.listenerCount.mockClear()
+    // prependListener - is handled/overridden as part of stream.Writable
+    // prependOnceListener - is handled/overridden as part of stream.Writable
+    response.eventNames.mockClear()
   }
 
   return {
