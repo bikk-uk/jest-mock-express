@@ -3,7 +3,7 @@ import type { Socket } from 'net'
 import type { Response } from 'express'
 
 export function callAllFunctions(res: Response) {
-  // express.Response
+  /* express.Response */
   res.status(123)
   res.sendStatus(123)
   res.links({})
@@ -28,7 +28,7 @@ export function callAllFunctions(res: Response) {
   res.vary('test')
   res.append('test')
 
-  // http.ServerResponse
+  /* http.ServerResponse */
   res.end()
   res.assignSocket({} as Socket)
   res.detachSocket({} as Socket)
@@ -36,7 +36,7 @@ export function callAllFunctions(res: Response) {
   res.writeHead(123)
   res.writeProcessing()
 
-  // http.OutgoingMessage
+  /* http.OutgoingMessage */
   res.setTimeout(123)
   res.setHeader('test', 'test')
   res.getHeader('test')

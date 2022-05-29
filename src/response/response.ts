@@ -21,7 +21,7 @@ export const getMockRes = <T extends Response>(
 } => {
   const next = jest.fn()
   const {
-    // express.Response
+    /* express.Response */
     status = jest.fn().mockName('status mock default'),
     sendStatus = jest.fn().mockName('sendStatus mock default'),
     links = jest.fn().mockName('links mock default'),
@@ -51,7 +51,7 @@ export const getMockRes = <T extends Response>(
     append = jest.fn().mockName('append mock default'),
     req = {},
 
-    // http.ServerResponse
+    /* http.ServerResponse */
     statusCode = 0,
     statusMessage = '',
     assignSocket = jest.fn().mockName('assignSocket mock default'),
@@ -60,7 +60,7 @@ export const getMockRes = <T extends Response>(
     writeHead = jest.fn().mockName('writeHead mock default'),
     writeProcessing = jest.fn().mockName('writeProcessing mock default'),
 
-    // http.OutgoingMessage
+    /* http.OutgoingMessage */
     // req - is handled/overridden as part of express.Response
     chunkedEncoding = false,
     shouldKeepAlive = false,
@@ -87,7 +87,7 @@ export const getMockRes = <T extends Response>(
     ...extraProvidedValues
   } = values
   const response = {
-    // express.Response
+    /* express.Response */
     status,
     sendStatus,
     links,
@@ -117,7 +117,7 @@ export const getMockRes = <T extends Response>(
     app,
     req,
 
-    // http.ServerResponse
+    /* http.ServerResponse */
     statusCode,
     statusMessage,
     assignSocket,
@@ -126,7 +126,7 @@ export const getMockRes = <T extends Response>(
     writeHead,
     writeProcessing,
 
-    // http.OutgoingMessage
+    /* http.OutgoingMessage */
     chunkedEncoding,
     shouldKeepAlive,
     useChunkedEncodingByDefault,
@@ -152,7 +152,7 @@ export const getMockRes = <T extends Response>(
     ...extraProvidedValues,
   }
 
-  // express.Response - chainable functions
+  /* express.Response - chainable functions */
   response.status.mockReturnValue(response)
   response.sendStatus.mockReturnValue(response)
   response.links.mockReturnValue(response)
@@ -171,15 +171,15 @@ export const getMockRes = <T extends Response>(
   response.vary.mockReturnValue(response)
   response.append.mockReturnValue(response)
 
-  // http.ServerResponse - chainable functions
+  /* http.ServerResponse - chainable functions */
   response.writeHead.mockReturnValue(response)
 
-  // http.OutgoingMessage - chainable functions
+  /* http.OutgoingMessage - chainable functions */
   response.setTimeout.mockReturnValue(response)
 
   const clearAllMocks = (): void => {
     next.mockClear()
-    // express.Response
+    /* express.Response */
     response.status.mockClear()
     response.sendStatus.mockClear()
     response.links.mockClear()
@@ -204,7 +204,7 @@ export const getMockRes = <T extends Response>(
     response.vary.mockClear()
     response.append.mockClear()
 
-    // http.ServerResponse
+    /* http.ServerResponse */
     response.end.mockClear()
     response.assignSocket.mockClear()
     response.detachSocket.mockClear()
@@ -212,7 +212,7 @@ export const getMockRes = <T extends Response>(
     response.writeHead.mockClear()
     response.writeProcessing.mockClear()
 
-    // http.OutgoingMessage
+    /* http.OutgoingMessage */
     response.setTimeout.mockClear()
     response.setHeader.mockClear()
     response.getHeader.mockClear()

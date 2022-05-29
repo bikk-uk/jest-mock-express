@@ -9,7 +9,7 @@ import type { MockRequest } from './index'
  */
 export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
   const {
-    // express.Request
+    /* express.Request */
     params = {},
     query = {},
     body = {},
@@ -45,7 +45,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     res = jest.fn().mockName('res mock default'),
     next = jest.fn().mockName('next mock default'),
 
-    // http.IncomingMessage
+    /* http.IncomingMessage */
     aborted = false,
     httpVersion = '',
     httpVersionMajor = 0,
@@ -62,7 +62,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusMessage = '',
     destroy = jest.fn().mockName('destroy mock default'),
 
-    // stream.Readable
+    /* stream.Readable */
     readable = false,
     readableHighWaterMark = 0,
     readableLength = 0,
@@ -88,7 +88,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     removeListener = jest.fn().mockName('removeListener mock default'),
     // destroy - is handled/overridden as part of http.IncomingMessage
 
-    // event.EventEmitter
+    /* event.EventEmitter */
     // addListener - is handled/overridden as part of stream.Readable
     // on - is handled/overridden as part of stream.Readable
     // once - is handled/overridden as part of stream.Readable
@@ -110,7 +110,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
   } = values
 
   return {
-    // express.Request
+    /* express.Request */
     params,
     query,
     body,
@@ -146,7 +146,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     res,
     next,
 
-    // http.IncomingMessage
+    /* http.IncomingMessage */
     aborted,
     httpVersion,
     httpVersionMajor,
@@ -163,7 +163,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusMessage,
     destroy,
 
-    // stream.Readable
+    /* stream.Readable */
     readable,
     readableHighWaterMark,
     readableLength,
@@ -189,7 +189,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     removeListener,
     // destroy - is handled/overridden as part of http.IncomingMessage
 
-    // event.EventEmitter
+    /* event.EventEmitter */
     // addListener - is handled/overridden as part of stream.Readable
     // on - is handled/overridden as part of stream.Readable
     // once - is handled/overridden as part of stream.Readable
