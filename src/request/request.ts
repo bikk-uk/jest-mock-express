@@ -109,7 +109,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     ...extraProvidedValues
   } = values
 
-  return {
+  const request = {
     /* express.Request */
     params,
     query,
@@ -208,7 +208,9 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
 
     // custom values
     ...extraProvidedValues,
-  } as unknown as T
+  }
+
+  return request as unknown as T
 }
 
 export default getMockReq
