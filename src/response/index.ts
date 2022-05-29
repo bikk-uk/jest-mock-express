@@ -1,8 +1,38 @@
 // Types
 import type { ServerResponse, OutgoingMessage, IncomingMessage } from 'http'
+import type { Writable } from 'stream'
 import type { Response } from 'express'
+import type { EventEventEmitter } from 'src'
 
-interface HttpOutgoingMessage {
+interface StreamWritable extends EventEventEmitter {
+  writable?: Writable['writable']
+  writableEnded?: Writable['writableEnded']
+  writableFinished?: Writable['writableFinished']
+  writableHighWaterMark?: Writable['writableHighWaterMark']
+  writableLength?: Writable['writableLength']
+  writableObjectMode?: Writable['writableObjectMode']
+  writableCorked?: Writable['writableCorked']
+  destroyed?: Writable['destroyed']
+  _write?: jest.Mock
+  _writev?: jest.Mock
+  _destroy?: jest.Mock
+  _final?: jest.Mock
+  write?: jest.Mock
+  setDefaultEncoding?: jest.Mock
+  end?: jest.Mock
+  cork?: jest.Mock
+  uncork?: jest.Mock
+  destroy?: jest.Mock
+  addListener?: jest.Mock
+  emit?: jest.Mock
+  on?: jest.Mock
+  once?: jest.Mock
+  prependListener?: jest.Mock
+  prependOnceListener?: jest.Mock
+  removeListener?: jest.Mock
+}
+
+interface HttpOutgoingMessage extends StreamWritable {
   req?: Partial<IncomingMessage>
   chunkedEncoding?: OutgoingMessage['chunkedEncoding']
   shouldKeepAlive?: OutgoingMessage['shouldKeepAlive']
@@ -21,8 +51,6 @@ interface HttpOutgoingMessage {
   removeHeader?: jest.Mock
   addTrailers?: jest.Mock
   flushHeaders?: jest.Mock
-
-  upgrading?: boolean
 }
 
 interface HttpServerResponse extends HttpOutgoingMessage {

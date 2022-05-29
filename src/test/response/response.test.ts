@@ -4,7 +4,7 @@ import { callAllFunctions } from '../helpers/response'
 // Tested Module
 import getMockRes from '../../response/response'
 
-export const DEFAULT_RES_KEY_LENGTH = 52
+export const DEFAULT_RES_KEY_LENGTH = 76
 
 describe('response - General', () => {
   test('the mock res is provided and contains the expected functions', () => {
@@ -116,6 +116,25 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.addTrailers).toBeCalledTimes(1)
     expect(res.flushHeaders).toBeCalledTimes(1)
 
+    /* stream.Writable */
+    expect(res._write).toBeCalledTimes(1)
+    expect(res._writev).toBeCalledTimes(1)
+    expect(res._destroy).toBeCalledTimes(1)
+    expect(res._final).toBeCalledTimes(1)
+    expect(res.write).toBeCalledTimes(1)
+    expect(res.setDefaultEncoding).toBeCalledTimes(1)
+    expect(res.end).toBeCalledTimes(1)
+    expect(res.cork).toBeCalledTimes(1)
+    expect(res.uncork).toBeCalledTimes(1)
+    expect(res.destroy).toBeCalledTimes(1)
+    expect(res.addListener).toBeCalledTimes(1)
+    expect(res.emit).toBeCalledTimes(1)
+    expect(res.on).toBeCalledTimes(1)
+    expect(res.once).toBeCalledTimes(1)
+    expect(res.prependListener).toBeCalledTimes(1)
+    expect(res.prependOnceListener).toBeCalledTimes(1)
+    expect(res.removeListener).toBeCalledTimes(1)
+
     // clear the mock
     mockClear()
 
@@ -165,6 +184,25 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.removeHeader).not.toBeCalled()
     expect(res.addTrailers).not.toBeCalled()
     expect(res.flushHeaders).not.toBeCalled()
+
+    /* stream.Writable */
+    expect(res._write).not.toBeCalled()
+    expect(res._writev).not.toBeCalled()
+    expect(res._destroy).not.toBeCalled()
+    expect(res._final).not.toBeCalled()
+    expect(res.write).not.toBeCalled()
+    expect(res.setDefaultEncoding).not.toBeCalled()
+    expect(res.end).not.toBeCalled()
+    expect(res.cork).not.toBeCalled()
+    expect(res.uncork).not.toBeCalled()
+    expect(res.destroy).not.toBeCalled()
+    expect(res.addListener).not.toBeCalled()
+    expect(res.emit).not.toBeCalled()
+    expect(res.on).not.toBeCalled()
+    expect(res.once).not.toBeCalled()
+    expect(res.prependListener).not.toBeCalled()
+    expect(res.prependOnceListener).not.toBeCalled()
+    expect(res.removeListener).not.toBeCalled()
   })
 
   test('clearMockRes clears all mocks', () => {
@@ -220,6 +258,25 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.addTrailers).toBeCalledTimes(1)
     expect(res.flushHeaders).toBeCalledTimes(1)
 
+    /* stream.Writable */
+    expect(res._write).toBeCalledTimes(1)
+    expect(res._writev).toBeCalledTimes(1)
+    expect(res._destroy).toBeCalledTimes(1)
+    expect(res._final).toBeCalledTimes(1)
+    expect(res.write).toBeCalledTimes(1)
+    expect(res.setDefaultEncoding).toBeCalledTimes(1)
+    expect(res.end).toBeCalledTimes(1)
+    expect(res.cork).toBeCalledTimes(1)
+    expect(res.uncork).toBeCalledTimes(1)
+    expect(res.destroy).toBeCalledTimes(1)
+    expect(res.addListener).toBeCalledTimes(1)
+    expect(res.emit).toBeCalledTimes(1)
+    expect(res.on).toBeCalledTimes(1)
+    expect(res.once).toBeCalledTimes(1)
+    expect(res.prependListener).toBeCalledTimes(1)
+    expect(res.prependOnceListener).toBeCalledTimes(1)
+    expect(res.removeListener).toBeCalledTimes(1)
+
     // clear the mock
     clearMockRes()
 
@@ -270,5 +327,23 @@ describe('response - the mock functions can be cleared', () => {
     expect(res.addTrailers).not.toBeCalled()
     expect(res.flushHeaders).not.toBeCalled()
 
+    /* stream.Writable */
+    expect(res._write).not.toBeCalled()
+    expect(res._writev).not.toBeCalled()
+    expect(res._destroy).not.toBeCalled()
+    expect(res._final).not.toBeCalled()
+    expect(res.write).not.toBeCalled()
+    expect(res.setDefaultEncoding).not.toBeCalled()
+    expect(res.end).not.toBeCalled()
+    expect(res.cork).not.toBeCalled()
+    expect(res.uncork).not.toBeCalled()
+    expect(res.destroy).not.toBeCalled()
+    expect(res.addListener).not.toBeCalled()
+    expect(res.emit).not.toBeCalled()
+    expect(res.on).not.toBeCalled()
+    expect(res.once).not.toBeCalled()
+    expect(res.prependListener).not.toBeCalled()
+    expect(res.prependOnceListener).not.toBeCalled()
+    expect(res.removeListener).not.toBeCalled()
   })
 })

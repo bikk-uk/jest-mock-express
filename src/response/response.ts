@@ -80,8 +80,32 @@ export const getMockRes = <T extends Response>(
     addTrailers = jest.fn().mockName('addTrailers mock default'),
     flushHeaders = jest.fn().mockName('flushHeaders mock default'),
 
-    // WHO DIS??
+    /* stream.Writable */
+    writable = false,
+    writableEnded = false,
+    writableFinished = false,
+    writableHighWaterMark = 0,
+    writableLength = 0,
+    writableObjectMode = false,
+    writableCorked = 0,
+    destroyed = false,
+    _write = jest.fn().mockName('_write mock default'),
+    _writev = jest.fn().mockName('_writev mock default'),
+    _destroy = jest.fn().mockName('_destroy mock default'),
+    _final = jest.fn().mockName('_final mock default'),
+    write = jest.fn().mockName('write mock default'),
+    setDefaultEncoding = jest.fn().mockName('setDefaultEncoding mock default'),
     end = jest.fn().mockName('end mock default'),
+    cork = jest.fn().mockName('cork mock default'),
+    uncork = jest.fn().mockName('uncork mock default'),
+    destroy = jest.fn().mockName('destroy mock default'),
+    addListener = jest.fn().mockName('addListener mock default'),
+    emit = jest.fn().mockName('emit mock default'),
+    on = jest.fn().mockName('on mock default'),
+    once = jest.fn().mockName('once mock default'),
+    prependListener = jest.fn().mockName('prependListener mock default'),
+    prependOnceListener = jest.fn().mockName('prependOnceListener mock default'),
+    removeListener = jest.fn().mockName('removeListener mock default'),
 
     // custom values
     ...extraProvidedValues
@@ -144,9 +168,32 @@ export const getMockRes = <T extends Response>(
     addTrailers,
     flushHeaders,
 
-    // stream.Writable
-    // TODO: Implement this
+    /* stream.Writable */
+    writable,
+    writableEnded,
+    writableFinished,
+    writableHighWaterMark,
+    writableLength,
+    writableObjectMode,
+    writableCorked,
+    destroyed,
+    _write,
+    _writev,
+    _destroy,
+    _final,
+    write,
+    setDefaultEncoding,
     end,
+    cork,
+    uncork,
+    destroy,
+    addListener,
+    emit,
+    on,
+    once,
+    prependListener,
+    prependOnceListener,
+    removeListener,
 
     // custom values
     ...extraProvidedValues,
@@ -177,6 +224,15 @@ export const getMockRes = <T extends Response>(
   /* http.OutgoingMessage - chainable functions */
   response.setTimeout.mockReturnValue(response)
 
+  /* stream.Writable - chainable functions */
+  response.setDefaultEncoding.mockReturnValue(response)
+  response.addListener.mockReturnValue(response)
+  response.on.mockReturnValue(response)
+  response.once.mockReturnValue(response)
+  response.prependListener.mockReturnValue(response)
+  response.prependOnceListener.mockReturnValue(response)
+  response.removeListener.mockReturnValue(response)
+
   const clearAllMocks = (): void => {
     next.mockClear()
     /* express.Response */
@@ -205,7 +261,6 @@ export const getMockRes = <T extends Response>(
     response.append.mockClear()
 
     /* http.ServerResponse */
-    response.end.mockClear()
     response.assignSocket.mockClear()
     response.detachSocket.mockClear()
     response.writeContinue.mockClear()
@@ -222,6 +277,25 @@ export const getMockRes = <T extends Response>(
     response.removeHeader.mockClear()
     response.addTrailers.mockClear()
     response.flushHeaders.mockClear()
+
+    /* stream.Writable */
+    response._write.mockClear()
+    response._writev.mockClear()
+    response._destroy.mockClear()
+    response._final.mockClear()
+    response.write.mockClear()
+    response.setDefaultEncoding.mockClear()
+    response.end.mockClear()
+    response.cork.mockClear()
+    response.uncork.mockClear()
+    response.destroy.mockClear()
+    response.addListener.mockClear()
+    response.emit.mockClear()
+    response.on.mockClear()
+    response.once.mockClear()
+    response.prependListener.mockClear()
+    response.prependOnceListener.mockClear()
+    response.removeListener.mockClear()
   }
 
   return {

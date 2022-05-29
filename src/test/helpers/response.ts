@@ -29,7 +29,6 @@ export function callAllFunctions(res: Response) {
   res.append('test')
 
   /* http.ServerResponse */
-  res.end()
   res.assignSocket({} as Socket)
   res.detachSocket({} as Socket)
   res.writeContinue()
@@ -46,4 +45,23 @@ export function callAllFunctions(res: Response) {
   res.removeHeader('test')
   res.addTrailers([])
   res.flushHeaders()
+
+  /* stream.Writable */
+  res._write({}, 'test', jest.fn())
+  res._writev && res._writev([], jest.fn())
+  res._destroy(null, jest.fn())
+  res._final(jest.fn())
+  res.write({}, jest.fn())
+  res.setDefaultEncoding('test')
+  res.end()
+  res.cork()
+  res.uncork()
+  res.destroy()
+  res.addListener('test', jest.fn())
+  res.emit('finish')
+  res.on('close', jest.fn())
+  res.once('pipe', jest.fn())
+  res.prependListener('drain', jest.fn())
+  res.prependOnceListener('unpipe', jest.fn())
+  res.removeListener('error', jest.fn())
 }
