@@ -1,8 +1,8 @@
 // Helpers
-import { providedFunction } from '../helpers/provided'
+import { providedFunction } from '../../helpers/provided'
 
 // Tested Module
-import getMockReq from '../../request/request'
+import getMockReq from '../../../request/request'
 
 describe('request - Provided for "event.EventEmitter" (accepts arguments and returns expected values)', () => {
   test('req.addListener can be provided', () => {

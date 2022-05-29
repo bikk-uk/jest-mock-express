@@ -2,7 +2,7 @@
 import type { Response } from 'express'
 
 // Tested Module
-import getMockRes from '../../response/response'
+import getMockRes from '../../../response/response'
 
 describe('response - Provided (accepts arguments and returns expected values)', () => {
   test('allows custom properties', () => {

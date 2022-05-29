@@ -1,5 +1,5 @@
 // Tested Module
-import getMockRes from '../../response/response'
+import getMockRes from '../../../response/response'
 
 describe('response - Defaults for "event.EventEmitter" (accepts no arguments and return default values)', () => {
   test('res.addListener is a mocked function', () => {

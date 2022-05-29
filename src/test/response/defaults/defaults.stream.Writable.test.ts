@@ -1,5 +1,5 @@
 // Tested Module
-import getMockRes from '../../response/response'
+import getMockRes from '../../../response/response'
 
 describe('response - Defaults for "stream.Writable" (accepts no arguments and return default values)', () => {
   test('res.writable is a boolean', () => {

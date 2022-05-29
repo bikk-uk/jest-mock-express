@@ -10,10 +10,10 @@ import {
   providedParams,
   providedString,
   providedStringArray,
-} from '../helpers/provided'
+} from '../../helpers/provided'
 
 // Tested Module
-import getMockReq from '../../request/request'
+import getMockReq from '../../../request/request'
 
 describe('request - Provided for "express - Request" (accepts arguments and returns expected values)', () => {
   test('req.params can be provided', () => {

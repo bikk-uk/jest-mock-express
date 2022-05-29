@@ -1,8 +1,8 @@
 // Helpers
-import { providedBoolean, providedFunction, providedNumber } from '../helpers/provided'
+import { providedBoolean, providedFunction, providedNumber } from '../../helpers/provided'
 
 // Tested Module
-import getMockReq from '../../request/request'
+import getMockReq from '../../../request/request'
 
 describe('request - Provided for "stream.Readable" (accepts arguments and returns expected values)', () => {
   test('req.readable can be provided', () => {

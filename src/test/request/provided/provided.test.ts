@@ -2,7 +2,7 @@
 import type { Request } from 'express-serve-static-core'
 
 // Tested Module
-import getMockReq from '../../request/request'
+import getMockReq from '../../../request/request'
 
 describe('request - Provided (accepts arguments and returns expected values)', () => {
   test('it allows custom properties', () => {

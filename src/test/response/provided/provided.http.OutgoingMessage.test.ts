@@ -1,8 +1,8 @@
 // Helpers
-import { providedBoolean, providedFunction, providedReq, providedSocket } from '../helpers/provided'
+import { providedBoolean, providedFunction, providedReq, providedSocket } from '../../helpers/provided'
 
 // Tested Module
-import getMockRes from '../../response/response'
+import getMockRes from '../../../response/response'
 
 describe('response - Provided for "http.OutgoingMessage" (accepts arguments and returns expected values)', () => {
   test('res.req can be provided', () => {

@@ -10,10 +10,10 @@ import {
   providedString,
   providedStringArray,
   providedStringObject,
-} from '../helpers/provided'
+} from '../../helpers/provided'
 
 // Tested Module
-import getMockReq from '../../request/request'
+import getMockReq from '../../../request/request'
 
 describe('request - Provided for "http.IncomingMessage" (accepts arguments and returns expected values)', () => {
   test('req.aborted can be provided', () => {

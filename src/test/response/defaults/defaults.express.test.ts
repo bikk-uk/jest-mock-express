@@ -1,5 +1,5 @@
 // Tested Module
-import getMockRes from '../../response/response'
+import getMockRes from '../../../response/response'
 
 describe('response - Defaults from "express.Express" (accepts no arguments and return default values)', () => {
   test('res.status is a mocked function', () => {

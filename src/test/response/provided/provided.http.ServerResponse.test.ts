@@ -1,8 +1,8 @@
 // Helpers
-import { providedFunction, providedNumber, providedString } from '../helpers/provided'
+import { providedFunction, providedNumber, providedString } from '../../helpers/provided'
 
 // Tested Module
-import getMockRes from '../../response/response'
+import getMockRes from '../../../response/response'
 
 describe('response - Provided for "http.ServerResponse" (accepts arguments and returns expected values)', () => {
   test('res.statusCode can be provided', () => {

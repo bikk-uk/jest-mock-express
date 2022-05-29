@@ -6,10 +6,10 @@ import {
   providedObject,
   providedReq,
   providedString,
-} from '../helpers/provided'
+} from '../../helpers/provided'
 
 // Tested Module
-import getMockRes from '../../response/response'
+import getMockRes from '../../../response/response'
 
 describe('response - Provided for "express.Express" (accepts arguments and returns expected values)', () => {
   test('res.status can be provided', () => {
