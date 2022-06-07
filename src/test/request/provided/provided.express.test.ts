@@ -1,13 +1,12 @@
-// Types
-import type { Request } from 'express-serve-static-core'
-
 // Helpers
 import {
+  providedApp,
   providedBoolean,
   providedFunction,
   providedMediaTypeArray,
   providedObject,
   providedParams,
+  providedRes,
   providedString,
   providedStringArray,
 } from '../../helpers/provided'
@@ -79,7 +78,7 @@ describe('request - Provided for "express - Request" (accepts arguments and retu
     expect(req.ips).toBe(providedStringArray)
   })
 
-  test('req.ips can be provided', () => {
+  test('req.subdomains can be provided', () => {
     const req = getMockReq({ subdomains: providedStringArray })
 
     expect(req.subdomains).toBeDefined()
@@ -234,17 +233,17 @@ describe('request - Provided for "express - Request" (accepts arguments and retu
   })
 
   test('req.app can be provided', () => {
-    const req = getMockReq({ app: providedObject as unknown as Request['app'] })
+    const req = getMockReq({ app: providedApp })
 
     expect(req.app).toBeDefined()
-    expect(req.app).toBe(providedObject)
+    expect(req.app).toBe(providedApp)
   })
 
   test('req.res can be provided', () => {
-    const req = getMockReq({ res: providedObject as unknown as Request['res'] })
+    const req = getMockReq({ res: providedRes })
 
     expect(req.res).toBeDefined()
-    expect(req.res).toBe(providedObject)
+    expect(req.res).toBe(providedRes)
   })
 
   test('req.next can be provided', () => {

@@ -1,12 +1,10 @@
-// Types
-import type { Request } from 'express-serve-static-core'
-
 // Helpers
 import {
   providedBoolean,
   providedFunction,
   providedNumber,
-  providedObject,
+  providedParams,
+  providedSocket,
   providedString,
   providedStringArray,
   providedStringObject,
@@ -52,24 +50,24 @@ describe('request - Provided for "http.IncomingMessage" (accepts arguments and r
   })
 
   test('req.connection can be provided', () => {
-    const req = getMockReq({ connection: providedObject as unknown as Request['connection'] })
+    const req = getMockReq({ connection: providedSocket })
 
     expect(req.connection).toBeDefined()
-    expect(req.connection).toBe(providedObject)
+    expect(req.connection).toBe(providedSocket)
   })
 
   test('req.socket can be provided', () => {
-    const req = getMockReq({ socket: providedObject as unknown as Request['socket'] })
+    const req = getMockReq({ socket: providedSocket })
 
     expect(req.socket).toBeDefined()
-    expect(req.socket).toBe(providedObject)
+    expect(req.socket).toBe(providedSocket)
   })
 
   test('req.headers can be provided', () => {
-    const req = getMockReq({ headers: providedObject as unknown as Request['headers'] })
+    const req = getMockReq({ headers: providedParams })
 
     expect(req.headers).toBeDefined()
-    expect(req.headers).toBe(providedObject)
+    expect(req.headers).toBe(providedParams)
   })
 
   test('req.rawHeaders can be provided', () => {

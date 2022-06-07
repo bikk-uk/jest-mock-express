@@ -29,6 +29,10 @@ export const providedReq: Partial<Response['req']> = {
   path: 'value',
 }
 
+export const providedRes: Partial<Response> = {
+  chunkedEncoding: true,
+}
+
 export const providedSocket: Partial<Response['socket']> = {
   connecting: true,
 }

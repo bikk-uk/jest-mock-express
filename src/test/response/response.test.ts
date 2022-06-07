@@ -26,10 +26,10 @@ describe('response - returns the expected object', () => {
   })
 
   test('the res object is provided', () => {
-    const mockRes = getMockRes()
+    const { res } = getMockRes()
 
-    expect(mockRes.res).toBeDefined()
-    expect(mockRes.res).toBeInstanceOf(Object)
+    expect(res).toBeDefined()
+    expect(res).toBeInstanceOf(Object)
   })
 
   test('the mock next function is provided', () => {

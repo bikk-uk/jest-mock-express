@@ -81,7 +81,7 @@ describe('response - Defaults for "http.ServerResponse" (accepts no arguments an
     expect(res.writeHead(200)).toBe(res)
   })
 
-  test('res.writeProcessing is a mocked function and is not chainable', () => {
+  test('res.writeProcessing is a mocked function', () => {
     const { res } = getMockRes()
 
     expect(res.writeProcessing).toBeDefined()
@@ -89,7 +89,7 @@ describe('response - Defaults for "http.ServerResponse" (accepts no arguments an
     expect((res.writeProcessing as jest.Mock).getMockName()).toBe('writeProcessing mock default')
   })
 
-  test('res.writeProcessing is a mocked function and is not chainable', () => {
+  test('res.writeProcessing is not chainable', () => {
     const { res } = getMockRes()
 
     // it does not return itself (is not chainable)
