@@ -8,5 +8,5 @@ module.exports = {
   tabs: false,
   arrowParens: 'always', // Needed for the type in Typescript
   bracketSpacing: true,
-  jsxBracketSameLine: true
+  bracketSameLine: true,
 }

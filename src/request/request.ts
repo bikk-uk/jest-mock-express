@@ -9,6 +9,7 @@ import type { MockRequest } from './index'
  */
 export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
   const {
+    /* express.Request */
     params = {},
     query = {},
     body = {},
@@ -43,6 +44,8 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     app = {},
     res = jest.fn().mockName('res mock default'),
     next = jest.fn().mockName('next mock default'),
+
+    /* http.IncomingMessage */
     aborted = false,
     httpVersion = '',
     httpVersionMajor = 0,
@@ -58,10 +61,56 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusCode = 0,
     statusMessage = '',
     destroy = jest.fn().mockName('destroy mock default'),
+
+    /* stream.Readable */
+    readable = false,
+    readableHighWaterMark = 0,
+    readableLength = 0,
+    readableObjectMode = false,
+    destroyed = false,
+    _read = jest.fn().mockName('_read mock default'),
+    read = jest.fn().mockName('read mock default'),
+    setEncoding = jest.fn().mockName('setEncoding mock default'),
+    pause = jest.fn().mockName('pause mock default'),
+    resume = jest.fn().mockName('resume mock default'),
+    isPaused = jest.fn().mockName('isPaused mock default'),
+    unpipe = jest.fn().mockName('unpipe mock default'),
+    unshift = jest.fn().mockName('unshift mock default'),
+    wrap = jest.fn().mockName('wrap mock default'),
+    push = jest.fn().mockName('push mock default'),
+    _destroy = jest.fn().mockName('_destroy mock default'),
+    addListener = jest.fn().mockName('addListener mock default'),
+    emit = jest.fn().mockName('emit mock default'),
+    on = jest.fn().mockName('on mock default'),
+    once = jest.fn().mockName('once mock default'),
+    prependListener = jest.fn().mockName('prependListener mock default'),
+    prependOnceListener = jest.fn().mockName('prependOnceListener mock default'),
+    removeListener = jest.fn().mockName('removeListener mock default'),
+    // destroy - is handled/overridden as part of http.IncomingMessage
+
+    /* event.EventEmitter */
+    // addListener - is handled/overridden as part of stream.Readable
+    // on - is handled/overridden as part of stream.Readable
+    // once - is handled/overridden as part of stream.Readable
+    // removeListener - is handled/overridden as part of stream.Readable
+    off = jest.fn().mockName('off mock default'),
+    removeAllListeners = jest.fn().mockName('removeAllListeners mock default'),
+    setMaxListeners = jest.fn().mockName('setMaxListeners mock default'),
+    getMaxListeners = jest.fn().mockName('getMaxListeners mock default'),
+    listeners = jest.fn().mockName('listeners mock default'),
+    rawListeners = jest.fn().mockName('rawListeners mock default'),
+    // emit - is handled/overridden as part of stream.Readable
+    listenerCount = jest.fn().mockName('listenerCount mock default'),
+    // prependListener - is handled/overridden as part of stream.Readable
+    // prependOnceListener - is handled/overridden as part of stream.Readable
+    eventNames = jest.fn().mockName('eventNames mock default'),
+
+    // custom values
     ...extraProvidedValues
   } = values
 
-  return {
+  const request = {
+    /* express.Request */
     params,
     query,
     body,
@@ -97,7 +146,7 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     res,
     next,
 
-    // http - IncomingMessage
+    /* http.IncomingMessage */
     aborted,
     httpVersion,
     httpVersionMajor,
@@ -114,9 +163,54 @@ export const getMockReq = <T extends Request>(values: MockRequest = {}): T => {
     statusMessage,
     destroy,
 
+    /* stream.Readable */
+    readable,
+    readableHighWaterMark,
+    readableLength,
+    readableObjectMode,
+    destroyed,
+    _read,
+    read,
+    setEncoding,
+    pause,
+    resume,
+    isPaused,
+    unpipe,
+    unshift,
+    wrap,
+    push,
+    _destroy,
+    addListener,
+    emit,
+    on,
+    once,
+    prependListener,
+    prependOnceListener,
+    removeListener,
+    // destroy - is handled/overridden as part of http.IncomingMessage
+
+    /* event.EventEmitter */
+    // addListener - is handled/overridden as part of stream.Readable
+    // on - is handled/overridden as part of stream.Readable
+    // once - is handled/overridden as part of stream.Readable
+    // removeListener - is handled/overridden as part of stream.Readable
+    off,
+    removeAllListeners,
+    setMaxListeners,
+    getMaxListeners,
+    listeners,
+    rawListeners,
+    // emit - is handled/overridden as part of stream.Readable
+    listenerCount,
+    // prependListener - is handled/overridden as part of stream.Readable
+    // prependOnceListener - is handled/overridden as part of stream.Readable
+    eventNames,
+
     // custom values
     ...extraProvidedValues,
-  } as T
+  }
+
+  return request as unknown as T
 }
 
 export default getMockReq

@@ -1,59 +1,91 @@
 // Types
-import { MediaType } from 'express-serve-static-core'
+import type { IncomingMessage } from 'http'
+import type { Readable } from 'stream'
+import type { Request } from 'express-serve-static-core'
+import type { EventEventEmitter } from 'src'
 
-interface MockIncomingMessage {
-  aborted?: boolean
-  httpVersion?: string
-  httpVersionMajor?: number
-  httpVersionMinor?: number
-  complete?: boolean
-  connection?: any
-  socket?: any
-  headers?: any
-  rawHeaders?: string[]
-  trailers?: { [key: string]: string | undefined }
-  rawTrailers?: string[]
-  setTimeout?: any
-  statusCode?: number
-  statusMessage?: string
-  destroy?: any
+interface StreamReadable extends EventEventEmitter {
+  readable?: Readable['readable']
+  readableHighWaterMark?: Readable['readableHighWaterMark']
+  readableLength?: Readable['readableLength']
+  readableObjectMode?: Readable['readableObjectMode']
+  destroyed?: Readable['destroyed']
+  _read?: jest.Mock
+  read?: jest.Mock
+  setEncoding?: jest.Mock
+  pause?: jest.Mock
+  resume?: jest.Mock
+  isPaused?: jest.Mock
+  unpipe?: jest.Mock
+  unshift?: jest.Mock
+  wrap?: jest.Mock
+  push?: jest.Mock
+  _destroy?: jest.Mock
+  addListener?: jest.Mock
+  emit?: jest.Mock
+  on?: jest.Mock
+  once?: jest.Mock
+  prependListener?: jest.Mock
+  prependOnceListener?: jest.Mock
+  removeListener?: jest.Mock
+  destroy?: jest.Mock
 }
 
-export interface MockRequest extends MockIncomingMessage {
-  params?: any
-  query?: any
-  body?: any
-  cookies?: any
-  method?: string
-  protocol?: string
-  secure?: boolean
-  ip?: string
-  ips?: string[]
-  subdomains?: string[]
-  path?: string
-  hostname?: string
-  host?: string
-  fresh?: boolean
-  stale?: boolean
-  xhr?: boolean
-  route?: any
-  signedCookies?: any
-  originalUrl?: string
-  url?: string
-  baseUrl?: string
-  accepted?: MediaType[]
-  get?: any
-  header?: any
-  accepts?: any
-  acceptsCharsets?: any
-  acceptsEncodings?: any
-  acceptsLanguages?: any
-  range?: any
-  param?: any
-  is?: any
-  app?: any
-  res?: any
-  next?: any
+interface HttpIncomingMessage extends StreamReadable {
+  aborted?: IncomingMessage['aborted']
+  httpVersion?: IncomingMessage['httpVersion']
+  httpVersionMajor?: IncomingMessage['httpVersionMajor']
+  httpVersionMinor?: IncomingMessage['httpVersionMinor']
+  complete?: IncomingMessage['complete']
+  connection?: Partial<IncomingMessage['connection']>
+  socket?: Partial<IncomingMessage['socket']>
+  headers?: Partial<IncomingMessage['headers']>
+  rawHeaders?: IncomingMessage['rawHeaders']
+  trailers?: IncomingMessage['trailers']
+  rawTrailers?: IncomingMessage['rawTrailers']
+  setTimeout?: jest.Mock
+  statusCode?: IncomingMessage['statusCode']
+  statusMessage?: IncomingMessage['statusMessage']
+  destroy?: jest.Mock
+}
+
+export interface MockRequest extends HttpIncomingMessage {
+  params?: Request['params']
+  query?: Request['query']
+  body?: Request['body']
+  cookies?: Request['cookies']
+  method?: Request['method']
+  protocol?: Request['protocol']
+  secure?: Request['secure']
+  ip?: Request['ip']
+  ips?: Request['ips']
+  subdomains?: Request['subdomains']
+  path?: Request['path']
+  hostname?: Request['hostname']
+  host?: Request['host']
+  fresh?: Request['fresh']
+  stale?: Request['stale']
+  xhr?: Request['xhr']
+  route?: Request['route']
+  signedCookies?: Request['signedCookies']
+  originalUrl?: Request['originalUrl']
+  url?: Request['url']
+  baseUrl?: Request['baseUrl']
+  accepted?: Request['accepted']
+  get?: jest.Mock
+  header?: jest.Mock
+  accepts?: jest.Mock
+  acceptsCharsets?: jest.Mock
+  acceptsEncodings?: jest.Mock
+  acceptsLanguages?: jest.Mock
+  range?: jest.Mock
+  param?: jest.Mock
+  is?: jest.Mock
+  app?: Partial<Request['app']>
+  res?: Partial<Request['res']>
+  next?: jest.Mock
+
   // allow custom properties to be provided
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
