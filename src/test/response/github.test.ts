@@ -15,4 +15,18 @@ describe('response - GitHub Issues', () => {
     expect(res.end).toBeCalledTimes(1)
     expect(res.end).toBeCalledWith()
   })
+
+  test('issue #58', () => {
+    const statusCode = 204
+    const { res } = getMockRes()
+
+    res.status(204).send()
+
+    // status is called
+    expect(res.status).toBeCalledTimes(1)
+    expect(res.status).toBeCalledWith(statusCode)
+    // chained send is called
+    expect(res.send).toBeCalledTimes(1)
+    expect(res.send).toBeCalledWith()
+  })
 })
