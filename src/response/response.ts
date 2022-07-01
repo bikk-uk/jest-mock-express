@@ -1,7 +1,7 @@
-// Libraries
-import { Response, NextFunction } from 'express'
-
 // Types
+import type { Response, NextFunction } from 'express'
+
+// Local Types
 import type { MockResponse } from './index'
 
 /**
