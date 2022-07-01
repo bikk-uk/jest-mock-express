@@ -7,7 +7,7 @@ import getMockReq from '../../request/request'
 describe('request - GitHub Issues', () => {
   test('issue #6', () => {
     enum AppOS {
-      Android = 1,
+      Android = '1',
     }
 
     const req = getMockReq({
