@@ -2,7 +2,9 @@
 import type { ServerResponse, OutgoingMessage, IncomingMessage } from 'http'
 import type { Writable } from 'stream'
 import type { Response } from 'express'
-import type { EventEventEmitter } from 'src'
+
+// Local Types
+import type { EventEventEmitter } from '../index'
 
 interface StreamWritable extends EventEventEmitter {
   writable?: Writable['writable']
