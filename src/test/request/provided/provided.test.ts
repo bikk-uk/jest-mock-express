@@ -24,8 +24,8 @@ describe('request - Provided (accepts arguments and returns expected values)', (
       user: mockUser,
       query: {
         id: '123',
-        limit: 10,
-        page: 2,
+        limit: '10',
+        page: '2',
       },
     })
 
@@ -38,7 +38,7 @@ describe('request - Provided (accepts arguments and returns expected values)', (
     expect(req.query).toBeInstanceOf(Object)
     expect(Object.keys(req.query).length).toBe(3)
     expect(req.query['id']).toBe('123')
-    expect(req.query['limit']).toBe(10)
-    expect(req.query['page']).toBe(2)
+    expect(req.query['limit']).toBe('10')
+    expect(req.query['page']).toBe('2')
   })
 })

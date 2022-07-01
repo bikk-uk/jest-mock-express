@@ -2,7 +2,9 @@
 import type { IncomingMessage } from 'http'
 import type { Readable } from 'stream'
 import type { Request } from 'express-serve-static-core'
-import type { EventEventEmitter } from 'src'
+
+// Local Types
+import type { EventEventEmitter } from '../index'
 
 interface StreamReadable extends EventEventEmitter {
   readable?: Readable['readable']

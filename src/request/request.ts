@@ -1,7 +1,7 @@
-// Libraries
-import { Request } from 'express'
-
 // Types
+import type { Request } from 'express'
+
+// Local Types
 import type { MockRequest } from './index'
 
 /**
