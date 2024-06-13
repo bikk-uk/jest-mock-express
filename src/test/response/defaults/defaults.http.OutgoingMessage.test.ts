@@ -57,7 +57,11 @@ describe('response - Defaults for "http.OutgoingMessage" (accepts no arguments a
 
     expect(res.connection).toBeDefined()
     expect(res.connection).toBeInstanceOf(Object)
-    expect(Object.keys(res.connection).length).toBe(0)
+    if (res.connection) {
+      expect(Object.keys(res.connection).length).toBe(0)
+    } else {
+      throw new Error('Should not get here')
+    }
   })
 
   test('res.socket is am empty object', () => {
@@ -65,7 +69,11 @@ describe('response - Defaults for "http.OutgoingMessage" (accepts no arguments a
 
     expect(res.socket).toBeDefined()
     expect(res.socket).toBeInstanceOf(Object)
-    expect(Object.keys(res.socket).length).toBe(0)
+    if (res.socket) {
+      expect(Object.keys(res.socket).length).toBe(0)
+    } else {
+      throw new Error('Should not get here')
+    }
   })
 
   test('res.setTimeout is a mocked function', () => {

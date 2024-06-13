@@ -1,7 +1,7 @@
 // Types
 import type { IncomingMessage } from 'http'
 import type { Readable } from 'stream'
-import type { Request } from 'express-serve-static-core'
+import type { Request } from 'express'
 
 // Local Types
 import type { EventEventEmitter } from '../index'
@@ -39,8 +39,8 @@ interface HttpIncomingMessage extends StreamReadable {
   httpVersionMajor?: IncomingMessage['httpVersionMajor']
   httpVersionMinor?: IncomingMessage['httpVersionMinor']
   complete?: IncomingMessage['complete']
-  connection?: Partial<IncomingMessage['connection']>
-  socket?: Partial<IncomingMessage['socket']>
+  connection?: Partial<IncomingMessage['connection']> | null
+  socket?: Partial<IncomingMessage['socket']> | null
   headers?: Partial<IncomingMessage['headers']>
   rawHeaders?: IncomingMessage['rawHeaders']
   trailers?: IncomingMessage['trailers']

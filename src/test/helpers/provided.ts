@@ -1,6 +1,5 @@
 // Types
-import type { Response } from 'express'
-import type { MediaType, Request } from 'express-serve-static-core'
+import type { Response, Request, MediaType } from 'express'
 
 export const providedNumber = 123
 
