@@ -1,5 +1,5 @@
 // Types
-import type { Request } from 'express-serve-static-core'
+import type { Request } from 'express'
 
 // Tested Module
 import getMockReq from '../../../request/request'

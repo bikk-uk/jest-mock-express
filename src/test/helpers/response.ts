@@ -47,12 +47,12 @@ export function callAllFunctions(res: Response) {
   res.flushHeaders()
 
   /* stream.Writable */
-  res._write({}, 'test', jest.fn())
+  res._write({}, 'base64', jest.fn())
   res._writev && res._writev([], jest.fn())
   res._destroy(null, jest.fn())
   res._final(jest.fn())
   res.write({}, jest.fn())
-  res.setDefaultEncoding('test')
+  res.setDefaultEncoding('base64')
   res.end()
   res.cork()
   res.uncork()
