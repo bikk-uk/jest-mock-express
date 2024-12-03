@@ -221,14 +221,6 @@ describe('request - Defaults from "express.Response" (accepts no arguments and r
     expect((req.range as jest.Mock).getMockName()).toBe('range mock default')
   })
 
-  test('req.param is a mocked function', () => {
-    const req = getMockReq()
-
-    expect(req.param).toBeDefined()
-    expect(typeof req.param).toBe('function')
-    expect((req.param as jest.Mock).getMockName()).toBe('param mock default')
-  })
-
   test('req.is is a mocked function', () => {
     const req = getMockReq()
 

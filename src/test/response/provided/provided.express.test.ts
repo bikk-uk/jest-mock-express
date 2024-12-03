@@ -61,13 +61,6 @@ describe('response - Provided for "express.Express" (accepts arguments and retur
     expect(res.sendFile).toBe(providedFunction)
   })
 
-  test('res.sendfile can be provided', () => {
-    const { res } = getMockRes({ sendfile: providedFunction })
-
-    expect(res.sendfile).toBeDefined()
-    expect(res.sendfile).toBe(providedFunction)
-  })
-
   test('res.download can be provided', () => {
     const { res } = getMockRes({ download: providedFunction })
 
