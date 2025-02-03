@@ -218,13 +218,6 @@ describe('request - Provided for "express - Request" (accepts arguments and retu
     expect(req.range).toBe(providedFunction)
   })
 
-  test('req.param can be provided', () => {
-    const req = getMockReq({ param: providedFunction })
-
-    expect(req.param).toBeDefined()
-    expect(req.param).toBe(providedFunction)
-  })
-
   test('req.is can be provided', () => {
     const req = getMockReq({ is: providedFunction })
 

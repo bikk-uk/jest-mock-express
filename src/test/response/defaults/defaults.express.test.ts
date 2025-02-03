@@ -107,21 +107,6 @@ describe('response - Defaults from "express.Express" (accepts no arguments and r
     expect(res.sendFile('test')).toBeUndefined()
   })
 
-  test('res.sendfile is a mocked function', () => {
-    const { res } = getMockRes()
-
-    expect(res.sendfile).toBeDefined()
-    expect(typeof res.sendfile).toBe('function')
-    expect((res.sendfile as jest.Mock).getMockName()).toBe('sendfile mock default')
-  })
-
-  test('res.sendfile function is not chainable', () => {
-    const { res } = getMockRes()
-
-    // it does not return itself (is not chainable)
-    expect(res.sendfile('test')).toBeUndefined()
-  })
-
   test('res.download is a mocked function', () => {
     const { res } = getMockRes()
 

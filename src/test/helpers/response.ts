@@ -11,7 +11,6 @@ export function callAllFunctions(res: Response) {
   res.json()
   res.jsonp()
   res.sendFile('test')
-  res.sendfile('test')
   res.download('test')
   res.contentType('test')
   res.type('test')
